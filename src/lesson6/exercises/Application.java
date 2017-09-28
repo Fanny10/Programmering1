@@ -4,7 +4,7 @@ public class Application {
 
 	public static void main(String[] args) {
 		System.out.println("Hello Word");
-		// VI har skapat et object av klassen Person
+		// VI har skapat ett object av klassen Person
 		Person fannysPerson = new Person("Fanny");
 		fannysPerson.writeName();
 		

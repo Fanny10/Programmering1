@@ -1,14 +1,24 @@
 package exercises;
 
 public class Person {
-	public Person() {
-		System.out.println("Constructor running!");
-		
-	}
-	public Person(String name) {
-		System.out.println(name);	
-	
 
-		
+	private String name;
+
+	public Person() {
+
+	}
+
+	public Person(String name) {
+
+		this.name = name;
+	}
+
+	public void writeName() {
+		System.out.println("My name is " + name);
+	}
+
+	public void setName(String name) {
+		this.name = name;
+
 	}
 }
