@@ -1,61 +1,56 @@
 package exercises.oop;
 
 public class Employee {
-	private int id() {
+	private int id;
 
-	}
+	private String firstName;
 
-	private String firstName {
+	private String lastName;
 
-	}
+	private int salary;
 
-	private String lastName {
-
-	}
-
-	private int salary() {
-
-	}
-
-	public Employee(int id, String firstname, String lastName, int salary) {
+	public Employee(int id, String firstName, String lastName, int salary) {
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.salary = salary;
 
 	}
 
 	public int getId() {
-
+		return id;
 	}
 
-	public String getFirstName("Fanny") {
-
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public String getLastName("Lindqvist") {
-		
+	public String getLastName() {
+		return lastName;
 	}
 
-	public String getName("Fanny Lindqvist") {
-		
+	public String getName() {
+		return firstName + " " + lastName;
 	}
 
-	public String getSalary() {
-
-	}
-
-	public int getSalary() {
-
+	public int getSalary1() {
+		return salary;
 	}
 
 	public void setSalary(int salary) {
 
 	}
 
-	public int getAnnualSalary(salary * 12) {
-		
+	public int getAnnualSalary() {
+		return salary * 12;
 	}
 
 	public int raiseSalary(int percent) {
-
+		this.salary = this.salary * percent;
+		return this.salary;
+		
+		
 	}
-
 	public String toString() {
+		return "Employee[="+this.+",="+this.+"]";
 }

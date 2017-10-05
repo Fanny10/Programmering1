@@ -40,5 +40,8 @@ public class Rectangle {
 		return 2 * (width + length);
 
 	}
+	public String toString() {
+		return "Rectangle[length="+this.length+",width="+this.width+"]";
+	}
 
 }
