@@ -4,17 +4,47 @@ public class InvoiceItem {
 	private String id;
 	private String desc;
 	private int qty;
-	private double untilPrice;
+	private double unitPrice;
 
-	public void IntvoiceItem(String id, String desc, int qty, double untiPrice) {
+	public InvoiceItem(String id, String desc, int qty, double untiPrice) {
 		this.id = id;
 		this.desc = desc;
 		this.qty = qty;
-		this.untilPrice = untilPrice;
+		this.unitPrice = unitPrice;
 	}
+
 	public String getID() {
-		
+		return id;
 	}
 
+	public String getDesc() {
+		return desc;
+	}
 
+	public int getQty() {
+		return qty;
+	}
+
+	public void setQty(int qty) {
+		this.qty = qty;
+	}
+
+	public double getUntiPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(double unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+
+	public double getTotal() {
+		return this.unitPrice * qty;
+		
+
+	}
+
+	public String toString() {
+		return "InvoiceItem[id="+this.id+", desc= "+this.qty + " " + this.unitPrice+"]";
+
+	}
 }

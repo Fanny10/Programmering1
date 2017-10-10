@@ -14,7 +14,6 @@ public class Employee {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.salary = salary;
-
 	}
 
 	public int getId() {
@@ -33,12 +32,12 @@ public class Employee {
 		return firstName + " " + lastName;
 	}
 
-	public int getSalary1() {
+	public int getSalary() {
 		return salary;
 	}
 
 	public void setSalary(int salary) {
-
+		this.salary = salary;
 	}
 
 	public int getAnnualSalary() {
@@ -52,5 +51,8 @@ public class Employee {
 		
 	}
 	public String toString() {
-		return "Employee[="+this.+",="+this.+"]";
+		return "Employee[id="+this.id+", name= "+this.firstName + " " + this.lastName + " " + this.salary+"]";
+
+	}
 }
+	
