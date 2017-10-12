@@ -1,10 +1,15 @@
 package exercises.oop;
 
+import java.util.Scanner;
+
 public class MainDate {
 
 	public static void main(String[] args) {
-		Date date = new Date(05,08,1990);
-
+		Scanner scanner = new Scanner(System.in);
+		
+		
+		Date date = new Date(scanner.nextInt(), 8, 1990);
+		System.out.println(date.toString());
 	}
 
 }

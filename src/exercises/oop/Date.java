@@ -42,7 +42,17 @@ public class Date {
 	}
 
 	public String toString() {
-		return "Date[=" + this.day + " " + this.month + " " + this.year + "]";
+		String stringDay;
+		if(this.day < 10)
+			stringDay = "0" + day;
+		else 
+			stringDay = "" + day;
+		String stringMonth;
+		if(this.month < 10)
+			stringMonth = "0" + month;
+		else 
+			stringMonth = "" + month;
+		return "Date[" + stringDay + "/" + stringMonth + "/" + this.year + "]";
 	}
 
 }
