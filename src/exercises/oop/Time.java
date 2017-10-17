@@ -37,20 +37,52 @@ public class Time {
 	}
 
 	public void setTime(int hour, int minute, int second) {
-		this.setTime(hour, minute, second);
+		this.hour = hour;
+		this.minute = minute;
+		this.second = second;
 	}
 
 	public String toString() {
-		return "Time[="this.hour" + " this.minute "+" this.second"]";
+		return "Time[hour=" + this.hour + ", minute =" + this.minute + ", second=" + this.second + "]";
 
 	}
 
 	public Time nextSecond() {
+		if (second + 1 == 60) {
+			second = 0;
+			minute = minute + 1;
+		} else {
+			second = second + 1;
+		}
+		if (minute == 60) {
+			minute = 0;
+			hour = hour + 1;
+		}
+		if (hour == 24) {
+			hour = 0;
+		}
+		Time nextSec = new Time(hour, minute, second);
+		return nextSec;
 
 	}
 
 	public Time previousSecond() {
+		if (second - 1 == -1) {
+			minute = minute - 1;
+			second = 59;
+		} else {
+			second -= 1;
+		}
+		if(minute == -1) {
+			hour = hour - 1;
+			minute = 59;
+		} 
+		if(hour == -1) {
+			hour = minute + 59; 
+		}
 
+		Time nextPre = new Time(hour, minute, second);
+		return nextPre;
 	}
 
 }
