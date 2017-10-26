@@ -8,7 +8,7 @@ public class StenSaxPåse {
 
 	public static void main(String[] args) {
 
-		// man får välja mellan Krona eller Klave
+		// man får välja mellan Sten, sax eller påse
 		Scanner usersGuess = new Scanner(System.in);
 
 		System.out.println("Select Sten, Sax, Påse: ");
