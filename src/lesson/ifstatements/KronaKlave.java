@@ -11,30 +11,44 @@ public class KronaKlave {
 		// man får välja mellan Krona eller Klave
 		Scanner usersGuess = new Scanner(System.in);
 
-		System.out.println("Select Krona or Klave: ");
+		int wins = 0;
+		int loss = 0;
 
-		String usersPick = usersGuess.nextLine().toLowerCase();
+		int numberOfGames = 20;
 
-		// System.out.println(usersPick);
+		for (int i = 0; i < numberOfGames; i++) {
+			System.out.println("Game: " + (i + 1));
 
-		// Datorn som slumpar
-		Random randomGenerator = new Random();
+			System.out.println("Select Krona or Klave: ");
 
-		boolean coinFlippValue = randomGenerator.nextBoolean();
+			String usersPick = usersGuess.nextLine().toLowerCase();
 
-		if (coinFlippValue == true) {
-			System.out.println("Computer - Krona");
-		} else {
-			System.out.println("Computer - Klave");
+			// System.out.println(usersPick);
+
+			// Datorn som slumpar
+			Random randomGenerator = new Random();
+
+			boolean coinFlippValue = randomGenerator.nextBoolean();
+
+			if (coinFlippValue == true) {
+				System.out.println("Computer - Krona");
+			} else {
+				System.out.println("Computer - Klave");
+			}
+
+			if (coinFlippValue == true && usersPick.equals("krona")
+					|| coinFlippValue == false && usersPick.equals("klave")) {
+
+				System.out.println("You won!");
+				wins++;
+			} else {
+				System.out.println("You lost!");
+				loss++;
+			}
+
+			System.out.println("Wins = " + wins);
+			System.out.println("loss = " + loss);
+
 		}
-
-		if (coinFlippValue == true && usersPick.equals("krona")||coinFlippValue == false && usersPick.equals("klave")) {
-
-			System.out.println("You won!");
-		} else {
-			System.out.println("You lost!");
-
-		}
-
 	}
 }
