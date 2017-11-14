@@ -9,13 +9,19 @@ public class StenSaxPåse {
 	public static void main(String[] args) {
 
 		// man får välja mellan Sten, sax eller påse
+		Scanner userGuess = new Scanner(System.in);
+
+		System.out.println("Hur många spel? : ");
+
 		Scanner usersGuess = new Scanner(System.in);
+
+		int antalSpel = userGuess.nextInt();
 
 		int wins = 0;
 		int loss = 0;
 		int draw = 0;
 
-		int numberOfGames = 10;
+		int numberOfGames = antalSpel;
 
 		for (int i = 0; i < numberOfGames; i++) {
 			System.out.println("Game: " + (i + 1));
@@ -23,6 +29,8 @@ public class StenSaxPåse {
 			System.out.println("Select Sten, Sax, Påse: ");
 
 			String usersPick = usersGuess.nextLine().toLowerCase();
+			
+			
 
 			// System.out.println(usersPick);
 
@@ -44,7 +52,7 @@ public class StenSaxPåse {
 
 			if (stenSaxPåseValue == 0 && usersPick.equals("påse") || stenSaxPåseValue == 1 && usersPick.equals("sax")
 					|| stenSaxPåseValue == 2 && usersPick.equals("sten")) {
-				System.out.println("You won!");
+				System.out.println("Du vann!");
 				wins++;
 			} else if (stenSaxPåseValue == 0 && usersPick.equals("sten")
 					|| stenSaxPåseValue == 1 && usersPick.equals("påse")
@@ -52,16 +60,16 @@ public class StenSaxPåse {
 				System.out.println("Lika");
 				draw++;
 			} else {
-				System.out.println("You lost!");
+				System.out.println("Du förlora!");
 				loss++;
 
 			}
 
-			System.out.println("Wins = " + wins);
-			System.out.println("loss = " + loss);
-			System.out.println("Draw = " + draw);
-
 		}
+
+		System.out.println("Wins = " + wins);
+		System.out.println("loss = " + loss);
+		System.out.println("Draw = " + draw);
 
 	}
 }
