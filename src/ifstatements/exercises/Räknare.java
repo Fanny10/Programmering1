@@ -2,6 +2,8 @@ package ifstatements.exercises;
 
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class Räknare {
 	/**
 	 * 6. Skapa en räknare som beräknar hur många timmar minuter och sekunder som en
@@ -11,7 +13,7 @@ public class Räknare {
 	 */
 
 	public static void main(String[] args) {
-
+		
 		Scanner userStartTime = new Scanner(System.in);
 
 		System.out.println("Välj en starttid :");
