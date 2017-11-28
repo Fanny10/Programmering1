@@ -23,7 +23,7 @@ public class StensaxPåseNya {
 			System.out.println("Game: " + (i + 1));
 
 			String[] options1 = { "Sten", "Sax", "Påse" };
-			ImageIcon icon = new ImageIcon("");
+			ImageIcon icon = new ImageIcon("C:/Users/Fanny.Lindqvist/Desktop/Stensaxpase.jpg");
 			String stenSaxPåse = (String) JOptionPane.showInputDialog(null, "Välj mellan", "Sten, Sax eller Påse",
 					JOptionPane.QUESTION_MESSAGE, icon, options1, options1[2]);
 
@@ -58,11 +58,19 @@ public class StensaxPåseNya {
 				JOptionPane.showMessageDialog(null, "Du förlora!");
 				loss++;
 			}
-			/*
-			 * JOptionPane.showMessageDialog("Wins = " + wins); System.out.println("loss = "
-			 * + loss); System.out.println("Draw = " + draw);
-			 */
 		}
+		ImageIcon icon1 = new ImageIcon("C:/Users/Fanny.Lindqvist/Desktop/Stensaxpase.jpg");
+		ImageIcon icon2 = new ImageIcon("C:/Users/Fanny.Lindqvist/Desktop/Stensaxpase.jpg");
+		ImageIcon icon3 = new ImageIcon("C:/Users/Fanny.Lindqvist/Desktop/Stensaxpase.jpg");
+
+		if (wins > loss && wins > draw) {
+			JOptionPane.showMessageDialog(null, "Du vann allt", null, null, -1, icon3);
+		} else if (loss > draw && wins < loss) {
+			JOptionPane.showMessageDialog(null, "Du förlora mest", null, null, -1, icon2);
+		} else {
+			JOptionPane.showMessageDialog(null, "De blir mest lika", null, null, -1, icon1);
+		}
+
 	}
 
 }
