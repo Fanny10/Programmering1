@@ -59,16 +59,13 @@ public class StensaxPåseNya {
 				loss++;
 			}
 		}
-		ImageIcon icon1 = new ImageIcon("C:/Users/Fanny.Lindqvist/Desktop/Stensaxpase.jpg");
-		ImageIcon icon2 = new ImageIcon("C:/Users/Fanny.Lindqvist/Desktop/Stensaxpase.jpg");
-		ImageIcon icon3 = new ImageIcon("C:/Users/Fanny.Lindqvist/Desktop/Stensaxpase.jpg");
 
 		if (wins > loss && wins > draw) {
-			JOptionPane.showMessageDialog(null, "Du vann allt", null, null, -1, icon3);
+			JOptionPane.showMessageDialog(null, "Du vann flest gånger");
 		} else if (loss > draw && wins < loss) {
-			JOptionPane.showMessageDialog(null, "Du förlora mest", null, null, -1, icon2);
+			JOptionPane.showMessageDialog(null, "Du förlora mest");
 		} else {
-			JOptionPane.showMessageDialog(null, "De blir mest lika", null, null, -1, icon1);
+			JOptionPane.showMessageDialog(null, "Det blev mest lika");
 		}
 
 	}
