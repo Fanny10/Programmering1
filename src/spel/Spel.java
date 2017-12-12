@@ -73,12 +73,15 @@ public class Spel {
 			hus();
 
 		} else {
-			Object[] options7 = { "", "", "" };
-
-			int hus = JOptionPane.showOptionDialog(null, "Okej, du valde att gå tillbaks \n Du" + " \n Vad gör du ?",
-					null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options7, options7[2]);
+			vägenTillbaks();
 
 		}
+	}
+	public static void vägenTillbaks() {
+		Object[] options7 = { "", "", "" };
+
+		int hus = JOptionPane.showOptionDialog(null, "Okej, du valde att gå på vägen bakom \n Du kommer till stan där du var förut och" + " \n Vad gör du ?",
+				null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options7, options7[2]);
 	}
 
 	public static void gåFörbi() {
@@ -88,19 +91,32 @@ public class Spel {
 				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options2, options2[2]);
 
 		if (person == 0) {
-			Object[] options5 = { "", "", "" };
-
-			int ut = JOptionPane.showOptionDialog(null,
-					"Okej, du valde att fortsätta gå \n Men du hör konstiga ljud framför dig" + " \n Vad gör du ?",
-					null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options5, options5[2]);
+			ljudPåVägen();
 		} else if (person == 1) {
-			Object[] options7 = { "", "", "" };
+			storaHuset();
+			
 
-			int vägen = JOptionPane.showOptionDialog(null,
-					"Okej, du valde att säga till \n Men det är ett stort  framför dig" + " \n Vad gör du ?", null,
-					JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options7, options7[2]);
-
+		}else {
+			
 		}
+	}
+	public static void storaHuset() {
+		Object[] options7 = { "knackar på", "fortsätter gå", "går tillbaks till personen" };
+
+		int vägen = JOptionPane.showOptionDialog(null,
+				"Okej, du valde att säga till \n Men vägen är tom men du ser ett stort hus framför dig" + " \n Vad gör du ?", null,
+				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options7, options7[2]);
+		if(vägen == 0) {
+			knackar();
+			
+		}else if(vägen == 1) {
+			ljudPåVägen();
+		}else {
+			
+		}
+	}
+	public static void knackar() {
+		
 	}
 
 	public static void help() {
@@ -152,6 +168,27 @@ public class Spel {
 		}
 
 	}
+	public static void ljudPåVägen() {
+		Object[] options5 = { "Går igenom skogen", "fortsätter gå", " går tillbaks till människan som behöver hjälp" };
+
+		int ut = JOptionPane.showOptionDialog(null,
+				"Okej, du valde att fortsätta gå \n Men du hör konstiga ljud framför dig" + " \n Vad gör du ?",
+				null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options5, options5[2]);
+		if(ut == 0) {
+			storaSkogen();
+		}else if(ut == 1) {
+			fortsätterGå();
+		}else {
+			
+		}
+	}
+	public static void fortsätterGå() {
+		
+		
+	}
+	public static void storaSkogen() {
+		
+	}
 
 	public static void hus() {
 		Object[] options6 = { "struntar i det och fortsätter gå", "hälsar på dem", "tar en annan väg" };
@@ -160,11 +197,12 @@ public class Spel {
 				"Okej, du valde att gå igenom husppmrådet \n Men det är massa folk framför dig" + " \n Vad gör du ?",
 				null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options6, options6[2]);
 		if (hus == 0) {
-			
-		}else if (hus ==1) {
-			
-		}else {
-			
+
+		} else if (hus == 1) {
+			husfolk();
+
+		} else {
+
 		}
 	}
 
@@ -204,14 +242,32 @@ public class Spel {
 				"Okej, du valde att ta med personen \n personen säger till dig att du är i fara " + " \n Vad gör du?",
 				null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options1, options1[2]);
 		if (personen == 0) {
-			liv = liv - 1;
-			JOptionPane.showMessageDialog(null, "Okej, du valde att släppa personen \n Det skulle du inte gjort, för personen hade med sig vapnet och råkar då skada dig"
-					+ " \n Du får -1 liv" + " så du har nu " + liv + "kvar");
+			släppaPersonen();
+
+		} else if (personen == 1) {
+			rädd();
+		} else {
 
 		}
 	}
+
 	public static void husfolk() {
-		
+
+	}
+
+	public static void rädd() {
+
+	}
+
+	public static void släppaPersonen() {
+		liv = liv - 1;
+		JOptionPane.showMessageDialog(null,
+				"Okej, du valde att släppa personen \n Det skulle du inte gjort, för personen hade med sig vapnet och råkar då skada dig"
+						+ " \n Du får -1 liv" + " så du har nu " + liv + "kvar");
+		personen();
+	}
+	public static void hemma() {
+		level2();
 	}
 
 	public static void level2() {
