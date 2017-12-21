@@ -12,16 +12,28 @@ public class Spel {
 	private static int vapen = 0;
 	private static int nyckel = 0;
 	private static int ficklampa = 0;
+	private static String användarnamn;
+	
+	
 
 	public static void main(String[] args) {
 		start();
-
+	
+	}
+	public static void duFörlora() {
+		JOptionPane.showMessageDialog(null, "Game Over");
+		jaEllerNej();
 	}
 
 	public static void start() {
+	
 
-		String användarnamn = JOptionPane.showInputDialog(null, "Innan vi startar \n Vänligen skriv in ditt spel namn",
-				"Välkommen", 1);
+		användarnamn = JOptionPane.showInputDialog(null, "Innan vi startar \n Vänligen skriv in ditt spel namn",
+				"Välkommen", 1); 
+		jaEllerNej();
+	}
+public static void jaEllerNej() {
+	
 
 		while (true) {
 			String jaEllerNej = JOptionPane.showInputDialog(null, "Välkommen " + användarnamn
@@ -45,6 +57,7 @@ public class Spel {
 	}
 
 	public static void början() {
+		
 
 		Object[] options = new Object[] { "Tar en annan väg", "Låsas som du inte ser och går förbi",
 				"Frågar om personen behöver hjälp" };
@@ -236,7 +249,11 @@ public class Spel {
 					"Okej, du valde att gå i skogen i alla fall \n Det var en björn, och du har nu -1 liv"
 							+ " \n du har liv kvar " + liv,
 					null, skog, icont);
+			if(liv == 0) {
+				duFörlora();
+			}else {
 			skog();
+			}
 
 		} else if (skog == 1) {
 			hus();
@@ -384,7 +401,12 @@ public class Spel {
 				"Okej, du valde att gå i skogen i alla fall \n Det var en björn, och du har nu -1 liv "
 						+ " \n du har liv kvar " + liv,
 				null, liv, icon);
+		if(liv == 0) {
+			start();
+		}else {
+			
 		mörkaSkogen();
+	}
 	}
 
 	public static void AndraVägenTillHuset() {
