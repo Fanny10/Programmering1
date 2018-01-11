@@ -11,8 +11,10 @@ public class Spel {
 	private static int liv = 10;
 	private static int vapen = 0;
 	private static int nyckel = 0;
+	private static int nyckelnTillDubbelDörrar = 0;
 	private static int ficklampa = 0;
 	private static String användarnamn;
+	private static int skruvdragare = 0;
 	
 	
 
@@ -82,7 +84,7 @@ public static void jaEllerNej() {
 
 	public static void enAnnan() {
 		Object[] options1 = { "Genom skogen", "Genom ett hus område", "Går tillbaka till vägen bakom" };
-		ImageIcon icon = new ImageIcon("C:/Users/Fanny.Lindqvist/Desktop/Ny mapp (2)/dagväg.jpg");
+		ImageIcon icon = new ImageIcon("C:/Users/Fanny.Lindqvist/Desktop/Ny mapp (2)/gångväg.jpg");
 		int enAnnan = JOptionPane.showOptionDialog(null, "Okej, du valde en annan väg " + " \n Vilken?", null,
 				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, icon, options1, options1[2]);
 
@@ -175,11 +177,12 @@ public static void jaEllerNej() {
 
 	public static void fickLampa() {
 		ficklampa = 1;
-		Object[] options3 = { "Närmaste dörr", " ", "" };
+		Object[] options3 = { "Närmaste dörren", "", "" };
 
+		ImageIcon icon = new ImageIcon("C:/Users/Fanny.Lindqvist/Desktop/Ny mapp (2)/koridor.jpg");
 		int help = JOptionPane.showOptionDialog(null,
-				"Okej, du valde att smygga in \n men du kom inte långt" + " \n Vad gör du?", null,
-				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options3, options3[2]);
+				"Okej, du valde att smygga in \n men du kommer inte långt innan du hör konstiga ljud" + " \n Vad gör du?", null,
+				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, icon, options3, options3[2]);
 		if (help == 0) {
 			närmasteDörr();
 
@@ -192,14 +195,114 @@ public static void jaEllerNej() {
 	}
 
 	public static void närmasteDörr() {
+		Object[] options3 = { "tar skruvdargern och går igenom den öppna dörren", "går igenom den öppna dörren", "öpnnar den stängda dörren" };
+		
+		ImageIcon icon = new ImageIcon("C:/Users/Fanny.Lindqvist/Desktop/Ny mapp (2)/närmastedörren.jpg");
+		int help = JOptionPane.showOptionDialog(null,
+				"Okej, du valde att ta närmaste dörren \n på golvet ligger det en skruvdragare och den dörr står öppen" + " \n Vad gör du?", null,
+				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, icon, options3, options3[2]);
+		if (help == 0) {
+			skruvdragare = 1;
 
+		} else if (help == 1) {
+
+		} else {
+			låstDörr();
+
+		}
+		
+	}
+	public static void letarIHuset() {
+	Object[] options3 = { "Provar nyckeln i dörren", "Struntar i vad som finns där och letar efter en väg ut", "Lyssnar ifall du kan höra något på andra sidan dörren" };
+		
+		ImageIcon icon = new ImageIcon("C:/Users/Fanny.Lindqvist/Desktop/Ny mapp (2)/andraSidan.jpg");
+		int help = JOptionPane.showOptionDialog(null,
+				"Okej, du valde att leta i rummet \n Du hittar en nyckel vad ska du göra", null,
+				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, icon, options3, options3[2]);
+		if (help == 0) {
+			if(nyckelnTillDubbelDörrar == 1) {
+				uppLåstDubbelDörr();
+			}else {
+				låstDubbelDörr();
+			}
+
+		} else if (help == 1) {
+
+		} else {
+			
+			
+
+		}
+		
+		
+	}
+	public static void låstDubbelDörr() {
+Object[] options3 = { "Letar i ett annat rum", "Fortsätter och leta i rummet", "Struntar i det och lyssnar ifall det är någon vid dörren" };
+		
+		ImageIcon icon = new ImageIcon("C:/Users/Fanny.Lindqvist/Desktop/Ny mapp (2)/närmastedörren.jpg");
+		int help = JOptionPane.showOptionDialog(null,
+				"Okej, Det var tuvärr fel nyckel" + " \n Vad gör du nu?", null,
+				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, icon, options3, options3[2]);
+		if (help == 0) {
+			
+
+		} else if (help == 1) {
+
+		} else {
+			
+			
+
+		}
+		
+	}
+	public static void uppLåstDubbelDörr() {
+Object[] options3 = { "Öppnar dörren försiktigt", ".", "." };
+		
+		ImageIcon icon = new ImageIcon("C:/Users/Fanny.Lindqvist/Desktop/Ny mapp (2)/närmastedörren.jpg");
+		int help = JOptionPane.showOptionDialog(null,
+				"Okej, Det var rätt nyckel" + " \n Vad gör du nu?", null,
+				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, icon, options3, options3[2]);
+		if (help == 0) {
+			
+
+		} else if (help == 1) {
+
+		} else {
+			
+			
+			
+			
+
+		}
+		
+	}
+	public static void låstDörr() {
+Object[] options3 = { "tar skruvdargern och går igenom den öppna dörren", "går igenom den öppna dörren", "Letar i rummet" };
+		
+		ImageIcon icon = new ImageIcon("C:/Users/Fanny.Lindqvist/Desktop/Ny mapp (2)/närmastedörren.jpg");
+		int help = JOptionPane.showOptionDialog(null,
+				"Okej, du valde att öppna dörren \n men dörren är låst du måste hitta en nykel" + " \n Vad gör du?", null,
+				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, icon, options3, options3[2]);
+		if (help == 0) {
+			
+
+		} else if (help == 1) {
+
+		} else {
+			nyckel = 1;
+			letarIHuset();
+			
+			
+
+		}
+		
 	}
 
 	public static void ljud() {
-		Object[] options3 = { "Säger hallå, någon hemma?", " Smygger in och tar fiklampan", "" };
+		Object[] options3 = { "Springer in till den närmaste dörren", "Tar ficklampan och gömmer dig bakom gardinern", "" };
 
 		int help = JOptionPane.showOptionDialog(null,
-				"Okej, du valde att smygga in \n men du kom inte långt" + " \n Vad gör du?", null,
+				"Okej, du valde att smygga in \n men du kommer inte långt innan du har konstiga ljud ifrån övervåningen" + " \n Vad gör du?", null,
 				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options3, options3[2]);
 		if (help == 0) {
 
@@ -438,7 +541,7 @@ public static void jaEllerNej() {
 		} else if (ut == 1) {
 			fortsätterGå();
 		} else {
-
+			
 		}
 	}
 
@@ -486,6 +589,20 @@ public static void jaEllerNej() {
 	}
 
 	public static void husfolk() {
+		Object[] options1 = { "" };
+
+		int rädd = JOptionPane.showOptionDialog(null,
+				"." + " \n Vad gör du?",
+				null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, options1, options1[2]);
+		if (rädd == 0) {
+
+		} else if (rädd == 1) {
+
+		} else {
+			
+
+		}
+	
 
 	}
 
