@@ -9,30 +9,36 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import javax.swing.AbstractAction;
 import javax.swing.BorderFactory;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.KeyStroke;
 import javax.swing.border.Border;
 
 public class TestGame extends JFrame implements WindowListener {
 	private JPanel panel = new JPanel();
 	
 	private ImageIcon poopIcon = new ImageIcon("C:/Users/jonas.andree/Desktop/poop.jpeg");
+	private ImageIcon poopIcon1 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/red-error-158.png");
+	private ImageIcon poopIcon2 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/red-invisible-16.png");
 	
 	private JLabel imageLabel = new JLabel(poopIcon);
 	
-	private JButton okButton = new JButton("key");
+	private JButton okButton = new JButton(poopIcon1);
 	private JButton closeButton = new JButton("Close");
-	private JButton nextButton = new JButton("Efter");
-	private JButton backButton = new JButton("tillbaks");
+	private JButton nextButton = new JButton("Next");
+	private JButton backButton = new JButton("B");
 	private JButton go = new JButton("Go");
 	private Toolkit tk = Toolkit.getDefaultToolkit();
 	
@@ -58,6 +64,18 @@ public class TestGame extends JFrame implements WindowListener {
 		
 		// Kör funktionen addButtons 
 		addComp(contentPane);
+
+		panel.getInputMap().put(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), "goUp");
+		panel.getActionMap().put("goUp", new AbstractAction() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				//Up is pressed...
+				upKeyPressed();
+
+			}
+			
+		});
 	}
 	/**
 	 * alt-shift-r gör så att alla referenser av ordet ändras
@@ -67,8 +85,12 @@ public class TestGame extends JFrame implements WindowListener {
 		// panel
 		panel.setLayout(null);
 		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setBackground(Color.magenta);
+		panel.setBackground(Color.gray);
+		
+		
 		// end of panel
+		
+		
 		
 		{
 			panel.add(imageLabel);
@@ -78,8 +100,18 @@ public class TestGame extends JFrame implements WindowListener {
 			imageLabel.setIcon(poopIcon);
 			imageLabel.setBounds(200, 200, 400, 400);
 		}
+		panel.add(imageLabel);
+		Image image = poopIcon1.getImage(); // transform it 
+		Image newimg = image.getScaledInstance(300, 300,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+		poopIcon1 = new ImageIcon(newimg);  // transform it back
+		imageLabel.setIcon(poopIcon1);
+		imageLabel.setBounds(220, 202, 420, 390);
 		
 		{
+			
+		
+			
+		
 			JButton clearButton = new JButton("Clear");
 			panel.add(clearButton);
 			clearButton.addActionListener(e -> buttonActionClear());
@@ -93,7 +125,7 @@ public class TestGame extends JFrame implements WindowListener {
 			textInfo.setBounds(1000, 200, 400, 800);
 			textInfo.setText("<html><body><b style='color:#FFFFFF'>Hej,<br> Välkommen till vårat spel! <br> Du hör en bil och ser ett ljus! <br> Vad gör du?</b>");
 
-			Border  matteBorder = BorderFactory.createMatteBorder(1,3,5,7,  Color.WHITE);
+			Border  matteBorder = BorderFactory.createMatteBorder(1,3,5,7,  Color.lightGray);
 			textInfo.setBorder(matteBorder);
 		}
 		
@@ -103,6 +135,7 @@ public class TestGame extends JFrame implements WindowListener {
 			panel.add(okButton);
 			okButton.addActionListener(e -> buttonAction());
 			Dimension sizeOKButton = okButton.getPreferredSize();
+			okButton.setBackground(null);
 			okButton.setBounds(tk.getScreenSize().width - 400,tk.getScreenSize().height - 200, sizeOKButton.width, sizeOKButton.height);
 		}
 		
@@ -138,6 +171,12 @@ public class TestGame extends JFrame implements WindowListener {
 		textInfo.setText("<html><body>");
 
 	}
+	
+	public void upKeyPressed() {
+		System.out.println("Go up!");
+	}
+	
+	
 	public void buttonActionNext() {
 		nextButton.setText("<html><body><b style='color:red;text-decoration:underline;'>N</b><b>ext</b></body></html>"); 
 		System.out.println("Next Button pressed!");	
@@ -219,6 +258,12 @@ public class TestGame extends JFrame implements WindowListener {
 	public void windowOpened(WindowEvent e) {
 		System.out.println("windowOpened");		
 		
+	}
+	public ImageIcon getPoopIcon1() {
+		return poopIcon1;
+	}
+	public void setPoopIcon1(ImageIcon poopIcon1) {
+		this.poopIcon1 = poopIcon1;
 	}
 
 }
