@@ -32,14 +32,16 @@ public class TestGame extends JFrame implements WindowListener {
 	private ImageIcon poopIcon = new ImageIcon("C:/Users/jonas.andree/Desktop/poop.jpeg");
 	private ImageIcon poopIcon1 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/red-error-158.png");
 	private ImageIcon poopIcon2 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/red-invisible-16.png");
+	private ImageIcon poopIcon3 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/black-shoping-bag-90.png");
 	
 	private JLabel imageLabel = new JLabel(poopIcon);
 	
-	private JButton okButton = new JButton(poopIcon1);
+	private JButton okButton = new JButton(poopIcon2);
 	private JButton closeButton = new JButton("Close");
 	private JButton nextButton = new JButton("Next");
 	private JButton backButton = new JButton("B");
 	private JButton go = new JButton("Go");
+	private JButton In = new JButton(poopIcon3);
 	private Toolkit tk = Toolkit.getDefaultToolkit();
 	
 	private JLabel textInfo = new JLabel(".....");
@@ -107,7 +109,8 @@ public class TestGame extends JFrame implements WindowListener {
 		imageLabel.setIcon(poopIcon1);
 		imageLabel.setBounds(220, 202, 420, 390);
 		
-		{
+		
+		{	
 			
 		
 			
@@ -138,6 +141,12 @@ public class TestGame extends JFrame implements WindowListener {
 			okButton.setBackground(null);
 			okButton.setBounds(tk.getScreenSize().width - 400,tk.getScreenSize().height - 200, sizeOKButton.width, sizeOKButton.height);
 		}
+		panel.add(In);
+		In.addActionListener(t -> buttonAction());
+		Dimension sizeIn = In.getPreferredSize();
+		In.setBackground(null);
+		In.setBounds(tk.getScreenSize().width - 200,tk.getScreenSize().height - 170, sizeIn.width, sizeIn.height);
+	
 		
 		{ //close 
 			panel.add(closeButton);
@@ -149,8 +158,8 @@ public class TestGame extends JFrame implements WindowListener {
 		
 		{ // next
 			contentPane.add(nextButton, BorderLayout.EAST);
-			nextButton.addActionListener(e -> buttonActionNext());
-			nextButton.setToolTipText("<html><body><b style='color:red;text-decoration:underline;'>N</b><b>ext</b></body></html>");
+			nextButton.addActionListener(x -> buttonActionNext());
+			nextButton.setToolTipText("<html><body><b style='color:red;text-decoration:underline;'>Ne</b><b>xt</b></body></html>");
 		} // end of next
 		
 		{// back
@@ -178,17 +187,20 @@ public class TestGame extends JFrame implements WindowListener {
 	
 	
 	public void buttonActionNext() {
-		nextButton.setText("<html><body><b style='color:red;text-decoration:underline;'>N</b><b>ext</b></body></html>"); 
+		nextButton.setText("<html><body><b style='color:red;text-decoration:underline;'>Ne</b><b>xt</b></body></html>"); 
 		System.out.println("Next Button pressed!");	
 		level++;
 		if (level == 2) {
 			panel.removeAll();
 			panel.add(closeButton);
 			panel.add(okButton);
-			okButton.setText("BLuqsdchionshasiohioB");
+			okButton.setText("Okej");
 			Dimension size = okButton.getPreferredSize();
 			okButton.setSize(size);
 			panel.repaint();
+			go.addActionListener(x -> buttonActionNext());
+			 
+			
 		} else if (level == 3) {
 			panel.removeAll();
 			panel.add(closeButton);
@@ -264,6 +276,8 @@ public class TestGame extends JFrame implements WindowListener {
 	}
 	public void setPoopIcon1(ImageIcon poopIcon1) {
 		this.poopIcon1 = poopIcon1;
-	}
+	}public void setPoopIcon2(ImageIcon poopIcon2) {
+		this.poopIcon2 = poopIcon2;
 
+}
 }
