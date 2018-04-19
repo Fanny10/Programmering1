@@ -5,9 +5,11 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Insets;
+import java.awt.LayoutManager;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -25,6 +27,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 import javax.swing.border.Border;
+import javafx.scene.layout.Background;
 
 public class TestGame extends JFrame implements WindowListener {
 	private JPanel panel = new JPanel();
@@ -35,6 +38,7 @@ public class TestGame extends JFrame implements WindowListener {
 	private ImageIcon poopIcon3 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/black-shoping-bag-90.png");
 	private ImageIcon poopIcon4 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/norea.png");
 	private ImageIcon poopIcon5 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/Scott.png");
+	private ImageIcon poopIcon6 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/kontor1.png");
 
 	private JLabel imageLabel = new JLabel(poopIcon);
 
@@ -91,89 +95,105 @@ public class TestGame extends JFrame implements WindowListener {
 		// panel
 		panel.setLayout(null);
 		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setBackground(Color.gray);
+		panel.setBackground(Color.black);
 
-		{ // close
-			panel.add(closeButton);
-			closeButton.addActionListener(e -> buttonActionClose());
-			closeButton.setMnemonic(KeyEvent.VK_C);
-			Dimension size = closeButton.getPreferredSize();
-			closeButton.setBounds(tk.getScreenSize().width - 200, 20, size.width, size.height);
+	}
 
-		}
-		// end of close
-		{
-			panel.add(norea);
-			norea.addActionListener(e -> buttonActionNorea());
-			Dimension size = norea.getPreferredSize();
-			norea.setBackground(null);
-			norea.setBounds(tk.getScreenSize().width - 400 - size.width, 200, size.width, size.height);
+	{ // close
+		panel.add(closeButton);
+		closeButton.addActionListener(e -> buttonActionClose());
+		closeButton.setMnemonic(KeyEvent.VK_C);
+		Dimension size = closeButton.getPreferredSize();
+		closeButton.setBounds(tk.getScreenSize().width - 200, 20, size.width, size.height);
 
-		}
-		{
-			panel.add(scott);
-			// scott.addActionListener(e -> buttonActionScott());
-			Dimension size = norea.getPreferredSize();
-			scott.setBackground(null);
-			scott.setBounds(400, 200, size.width, size.height);
+	}
+	// end of close
 
-		}
-		/*
-		 * // end of panel
-		 * 
-		 * { panel.add(imageLabel); Image image = poopIcon.getImage(); // transform it
-		 * Image newimg = image.getScaledInstance(400, 400,
-		 * java.awt.Image.SCALE_SMOOTH); // scale it the smooth way poopIcon = new
-		 * ImageIcon(newimg); // transform it back imageLabel.setIcon(poopIcon);
-		 * imageLabel.setBounds(200, 200, 400, 400); } panel.add(imageLabel); Image
-		 * image = poopIcon1.getImage(); // transform it Image newimg =
-		 * image.getScaledInstance(300, 300, java.awt.Image.SCALE_SMOOTH); // scale it
-		 * the smooth way poopIcon1 = new ImageIcon(newimg); // transform it back
-		 * imageLabel.setIcon(poopIcon1); imageLabel.setBounds(220, 202, 420, 390);
-		 * 
-		 * {
-		 * 
-		 * JButton clearButton = new JButton("Clear"); panel.add(clearButton);
-		 * clearButton.addActionListener(e -> buttonActionClear()); Dimension
-		 * sizeOKButton = clearButton.getPreferredSize();
-		 * clearButton.setBounds(tk.getScreenSize().width - 400 - sizeOKButton.width,
-		 * tk.getScreenSize().height - 200, sizeOKButton.width, sizeOKButton.height);
-		 * 
-		 * }
-		 * 
-		 * { panel.add(textInfo); textInfo.setBounds(1000, 200, 400, 800);
-		 * textInfo.setText(
-		 * "<html><body><b style='color:#FFFFFF'>Hej,<br> Välkommen till vårat spel! <br> Du hör en bil och ser ett ljus! <br> Vad gör du?</b>"
-		 * );
-		 * 
-		 * Border matteBorder = BorderFactory.createMatteBorder(1, 3, 5, 7,
-		 * Color.lightGray); textInfo.setBorder(matteBorder); }
-		 * 
-		 * {// ok button panel.add(okButton); okButton.addActionListener(e ->
-		 * buttonAction()); Dimension sizeOKButton = okButton.getPreferredSize();
-		 * okButton.setBackground(null); okButton.setBounds(tk.getScreenSize().width -
-		 * 400, tk.getScreenSize().height - 200, sizeOKButton.width,
-		 * sizeOKButton.height); } panel.add(In); In.addActionListener(t ->
-		 * buttonAction()); Dimension sizeIn = In.getPreferredSize();
-		 * In.setBackground(null); In.setBounds(tk.getScreenSize().width - 200,
-		 * tk.getScreenSize().height - 170, sizeIn.width, sizeIn.height);
-		 * 
-		 * 
-		 * 
-		 * { // next contentPane.add(nextButton, BorderLayout.EAST);
-		 * nextButton.addActionListener(x -> buttonActionNext());
-		 * nextButton.setToolTipText(
-		 * "<html><body><b style='color:red;text-decoration:underline;'>Ne</b><b>xt</b></body></html>"
-		 * ); } // end of next
-		 * 
-		 * {// back contentPane.add(backButton, BorderLayout.WEST);
-		 * backButton.addActionListener(e -> buttonActionBack());
-		 * backButton.setBackground(Color.GREEN); Border matteBorder =
-		 * BorderFactory.createMatteBorder(1, 3, 5, 7, Color.lightGray);
-		 * backButton.setBorder(matteBorder); } contentPane.add(go, BorderLayout.NORTH);
-		 * go.addActionListener(e -> buttonActionBack()); go.setBackground(Color.blue);
-		 */
-	}// end of back
+	{
+		panel.add(textInfo);
+		textInfo.setFont(textInfo.getFont().deriveFont(44.0f));
+		Dimension size = textInfo.getPreferredSize();
+		System.out.println(size.getWidth());
+		textInfo.setBounds(tk.getScreenSize().width / 2 - (int) size.getWidth() * 3, 100, 400, 50);
+		textInfo.setText("<html><body><b style='color:#fffff'> Select a Character </b>");
+	}
+	{
+		panel.add(norea);
+		norea.addActionListener(e -> buttonActionNorea());
+		norea.setToolTipText(
+				"<html><body><b style='color:#FF1493;text-decoration:underline;'>Norea</b> <br> Gender: Girl <br> Age:20 years <br> Height:163cm <br> Weight:56kg </b></body></html>");
+
+		Dimension size = norea.getPreferredSize();
+		norea.setBackground(null);
+		norea.setBounds(tk.getScreenSize().width - 400 - size.width, 200, size.width, size.height);
+
+	}
+	{
+		panel.add(scott);
+		scott.addActionListener(e -> buttonActionScott());
+		Dimension size = norea.getPreferredSize();
+		scott.setToolTipText(
+				"<html><body><b style='color:blue;text-decoration:underline;'>Scott</b><br> Gender:Boy <br> Age:20 years <br> Height:181cm <br> Weight:78kg </b></body></html>");
+		scott.setBackground(null);
+		scott.setBounds(400, 200, size.width, size.height);
+
+	}
+	/*
+	 * // end of panel
+	 * 
+	 * { panel.add(imageLabel); Image image = poopIcon.getImage(); // transform it
+	 * Image newimg = image.getScaledInstance(400, 400,
+	 * java.awt.Image.SCALE_SMOOTH); // scale it the smooth way poopIcon = new
+	 * ImageIcon(newimg); // transform it back imageLabel.setIcon(poopIcon);
+	 * imageLabel.setBounds(200, 200, 400, 400); } panel.add(imageLabel); Image
+	 * image = poopIcon1.getImage(); // transform it Image newimg =
+	 * image.getScaledInstance(300, 300, java.awt.Image.SCALE_SMOOTH); // scale it
+	 * the smooth way poopIcon1 = new ImageIcon(newimg); // transform it back
+	 * imageLabel.setIcon(poopIcon1); imageLabel.setBounds(220, 202, 420, 390);
+	 * 
+	 * {
+	 * 
+	 * JButton clearButton = new JButton("Clear"); panel.add(clearButton);
+	 * clearButton.addActionListener(e -> buttonActionClear()); Dimension
+	 * sizeOKButton = clearButton.getPreferredSize();
+	 * clearButton.setBounds(tk.getScreenSize().width - 400 - sizeOKButton.width,
+	 * tk.getScreenSize().height - 200, sizeOKButton.width, sizeOKButton.height);
+	 * 
+	 * }
+	 * 
+	 * { panel.add(textInfo); textInfo.setBounds(1000, 200, 400, 800);
+	 * textInfo.setText(
+	 * "<html><body><b style='color:#FFFFFF'>Hej,<br> Välkommen till vårat spel! <br> Du hör en bil och ser ett ljus! <br> Vad gör du?</b>"
+	 * );
+	 * 
+	 * Border matteBorder = BorderFactory.createMatteBorder(1, 3, 5, 7,
+	 * Color.lightGray); textInfo.setBorder(matteBorder); }
+	 * 
+	 * {// ok button panel.add(okButton); okButton.addActionListener(e ->
+	 * buttonAction()); Dimension sizeOKButton = okButton.getPreferredSize();
+	 * okButton.setBackground(null); okButton.setBounds(tk.getScreenSize().width -
+	 * 400, tk.getScreenSize().height - 200, sizeOKButton.width,
+	 * sizeOKButton.height); } panel.add(In); In.addActionListener(t ->
+	 * buttonAction()); Dimension sizeIn = In.getPreferredSize();
+	 * In.setBackground(null); In.setBounds(tk.getScreenSize().width - 200,
+	 * tk.getScreenSize().height - 170, sizeIn.width, sizeIn.height);
+	 * 
+	 * 
+	 * 
+	 * { // next contentPane.add(nextButton, BorderLayout.EAST);
+	 * nextButton.addActionListener(x -> buttonActionNext());
+	 * nextButton.setToolTipText(
+	 * "<html><body><b style='color:red;text-decoration:underline;'>Ne</b><b>xt</b></body></html>"
+	 * ); } // end of next
+	 * 
+	 * {// back contentPane.add(backButton, BorderLayout.WEST);
+	 * backButton.addActionListener(e -> buttonActionBack());
+	 * backButton.setBackground(Color.GREEN); Border matteBorder =
+	 * BorderFactory.createMatteBorder(1, 3, 5, 7, Color.lightGray);
+	 * backButton.setBorder(matteBorder); } contentPane.add(go, BorderLayout.NORTH);
+	 * go.addActionListener(e -> buttonActionBack()); go.setBackground(Color.blue);
+	 */
+	// end of back
 
 	private void buttonActionClear() {
 		textInfo.setText("<html><body>");
@@ -185,7 +205,12 @@ public class TestGame extends JFrame implements WindowListener {
 	}
 
 	private void buttonActionNorea() {
-		System.out.println("norea");
+		System.out.println("Norea");
+	}
+
+	private void buttonActionScott() {
+		System.out.println("Scott");
+
 	}
 
 	public void buttonActionNext() {
@@ -290,5 +315,10 @@ public class TestGame extends JFrame implements WindowListener {
 
 	public void setPoopIcon5(ImageIcon poopIcon5) {
 		this.poopIcon5 = poopIcon5;
+	}
+
+	public void setPoopIcon6(ImageIcon poopIcon6) {
+		this.poopIcon6 = poopIcon6;
+
 	}
 }
