@@ -51,6 +51,7 @@ public class TestGame extends JFrame implements WindowListener {
 	private JButton norea = new JButton(poopIcon4);
 	private JButton In = new JButton(poopIcon3);
 	private Toolkit tk = Toolkit.getDefaultToolkit();
+	private JButton next1Button = new JButton("Next");
 
 	private JLabel textInfo = new JLabel(".....");
 
@@ -92,52 +93,70 @@ public class TestGame extends JFrame implements WindowListener {
 	 * @param contentPane
 	 */
 	public void addComp(Container contentPane) {
+		
 		// panel
 		panel.setLayout(null);
 		contentPane.add(panel, BorderLayout.CENTER);
-		panel.setBackground(Color.black);
+		panel.setBackground(Color.gray);
+
+		{ // close
+			panel.add(closeButton);
+			closeButton.addActionListener(e -> buttonActionClose());
+			closeButton.setMnemonic(KeyEvent.VK_C);
+			Dimension size = closeButton.getPreferredSize();
+			closeButton.setBounds(tk.getScreenSize().width - 200, 20, size.width, size.height);
+
+		}
+		// end of close
+		
+		panel.add(next1Button);
+		next1Button.addActionListener(e -> Next1());
+		Dimension size = next1Button.getPreferredSize();
+		next1Button.setBounds(1600, 1000, size.width, size.height);
 
 	}
+	
 
-	{ // close
+	public void Next1() {
+
+		panel.removeAll();
+		
+		
 		panel.add(closeButton);
-		closeButton.addActionListener(e -> buttonActionClose());
-		closeButton.setMnemonic(KeyEvent.VK_C);
-		Dimension size = closeButton.getPreferredSize();
-		closeButton.setBounds(tk.getScreenSize().width - 200, 20, size.width, size.height);
-
-	}
-	// end of close
-
-	{
+		System.out.println("next");
 		panel.add(textInfo);
 		textInfo.setFont(textInfo.getFont().deriveFont(44.0f));
 		Dimension size = textInfo.getPreferredSize();
 		System.out.println(size.getWidth());
 		textInfo.setBounds(tk.getScreenSize().width / 2 - (int) size.getWidth() * 3, 100, 400, 50);
 		textInfo.setText("<html><body><b style='color:#fffff'> Select a Character </b>");
-	}
-	{
+
 		panel.add(norea);
 		norea.addActionListener(e -> buttonActionNorea());
 		norea.setToolTipText(
 				"<html><body><b style='color:#FF1493;text-decoration:underline;'>Norea</b> <br> Gender: Girl <br> Age:20 years <br> Height:163cm <br> Weight:56kg </b></body></html>");
 
-		Dimension size = norea.getPreferredSize();
+		Dimension size1 = norea.getPreferredSize();
 		norea.setBackground(null);
-		norea.setBounds(tk.getScreenSize().width - 400 - size.width, 200, size.width, size.height);
+		norea.setBounds(tk.getScreenSize().width - 400 - size1.width, 200, size1.width, size1.height);
 
-	}
-	{
 		panel.add(scott);
 		scott.addActionListener(e -> buttonActionScott());
-		Dimension size = norea.getPreferredSize();
+		Dimension size2 = norea.getPreferredSize();
 		scott.setToolTipText(
 				"<html><body><b style='color:blue;text-decoration:underline;'>Scott</b><br> Gender:Boy <br> Age:20 years <br> Height:181cm <br> Weight:78kg </b></body></html>");
 		scott.setBackground(null);
-		scott.setBounds(400, 200, size.width, size.height);
-
+		scott.setBounds(400, 200, size2.width, size2.height);
+JLabel thumb = new JLabel();
+		
+		thumb.setIcon(poopIcon6);
+		Dimension sizeThumb = thumb.getPreferredSize();
+		thumb.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+		panel.add(thumb);
+		panel.repaint();
 	}
+
+	// .........................................................
 	/*
 	 * // end of panel
 	 * 
@@ -206,10 +225,25 @@ public class TestGame extends JFrame implements WindowListener {
 
 	private void buttonActionNorea() {
 		System.out.println("Norea");
+		panel.removeAll();
+		panel.add(closeButton);
+		
+		
+		panel.repaint();
+		
+		
+		
+		
 	}
 
 	private void buttonActionScott() {
 		System.out.println("Scott");
+		panel.removeAll();
+		panel.add(closeButton);
+		
+		
+		
+		panel.repaint();
 
 	}
 
