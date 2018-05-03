@@ -39,6 +39,10 @@ public class TestGame extends JFrame implements WindowListener {
 	private ImageIcon poopIcon4 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/norea.png");
 	private ImageIcon poopIcon5 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/Scott.png");
 	private ImageIcon poopIcon6 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/kontor1.png");
+	private ImageIcon poopIcon7 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/trappa.JPG");
+	private ImageIcon poopIcon8 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/kontor.JPG");
+	private ImageIcon poopIcon9 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/1.JPG");
+	private ImageIcon poopIcon10 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/sten.JPG");
 
 	private JLabel imageLabel = new JLabel(poopIcon);
 
@@ -54,6 +58,7 @@ public class TestGame extends JFrame implements WindowListener {
 	private JButton next1Button = new JButton("Next");
 
 	private JLabel textInfo = new JLabel(".....");
+	private JLabel text = new JLabel(".....");
 
 	private int level = 1;
 
@@ -93,7 +98,7 @@ public class TestGame extends JFrame implements WindowListener {
 	 * @param contentPane
 	 */
 	public void addComp(Container contentPane) {
-		
+
 		// panel
 		panel.setLayout(null);
 		contentPane.add(panel, BorderLayout.CENTER);
@@ -108,20 +113,42 @@ public class TestGame extends JFrame implements WindowListener {
 
 		}
 		// end of close
-		
+
 		panel.add(next1Button);
 		next1Button.addActionListener(e -> Next1());
 		Dimension size = next1Button.getPreferredSize();
 		next1Button.setBounds(1600, 1000, size.width, size.height);
 
+		JLabel thumb1 = new JLabel();
+		thumb1.setIcon(poopIcon9);
+		Dimension sizeThumb1 = thumb1.getPreferredSize();
+		thumb1.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+		panel.add(thumb1);
+
 	}
-	
+
+	{
+		panel.add(text);
+		text.setFont(text.getFont().deriveFont(44.0f));
+		Dimension size9 = text.getPreferredSize();
+		//Postion X,Y Storlek X,Y
+		text.setBounds(600, 200, 800, 800);
+		text.setText("<html><body><b style='color:#fffff'> Welcome </b><br> 1 2 3 test hallå keö kfensb fbesb föjesb jkfeb </b>");
+		
+		//text.setHorizontalTextPosition(textPosition);
+		
+		
+		// poopIcon = new
+		Border  matteBorder = BorderFactory.createMatteBorder(30,30,30,30, poopIcon10);
+		text.setBorder(matteBorder);
+		text.setBackground(Color.gray);
+		
+	}
 
 	public void Next1() {
 
 		panel.removeAll();
-		
-		
+
 		panel.add(closeButton);
 		System.out.println("next");
 		panel.add(textInfo);
@@ -147,9 +174,9 @@ public class TestGame extends JFrame implements WindowListener {
 				"<html><body><b style='color:blue;text-decoration:underline;'>Scott</b><br> Gender:Boy <br> Age:20 years <br> Height:181cm <br> Weight:78kg </b></body></html>");
 		scott.setBackground(null);
 		scott.setBounds(400, 200, size2.width, size2.height);
-JLabel thumb = new JLabel();
-		
-		thumb.setIcon(poopIcon6);
+		JLabel thumb = new JLabel();
+
+		thumb.setIcon(poopIcon9);
 		Dimension sizeThumb = thumb.getPreferredSize();
 		thumb.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
 		panel.add(thumb);
@@ -189,13 +216,19 @@ JLabel thumb = new JLabel();
 	 * Color.lightGray); textInfo.setBorder(matteBorder); }
 	 * 
 	 * {// ok button panel.add(okButton); okButton.addActionListener(e ->
-	 * buttonAction()); Dimension sizeOKButton = okButton.getPreferredSize();
-	 * okButton.setBackground(null); okButton.setBounds(tk.getScreenSize().width -
-	 * 400, tk.getScreenSize().height - 200, sizeOKButton.width,
-	 * sizeOKButton.height); } panel.add(In); In.addActionListener(t ->
-	 * buttonAction()); Dimension sizeIn = In.getPreferredSize();
-	 * In.setBackground(null); In.setBounds(tk.getScreenSize().width - 200,
-	 * tk.getScreenSize().height - 170, sizeIn.width, sizeIn.height);
+	 * buttonAction());
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * sizeOKButton = okButton.getPreferredSize(); okButton.setBackground(null);
+	 * okButton.setBounds(tk.getScreenSize().width - 400, tk.getScreenSize().height
+	 * - 200, sizeOKButton.width, sizeOKButton.height); } panel.add(In);
+	 * In.addActionListener(t -> buttonAction()); Dimension sizeIn =
+	 * In.getPreferredSize(); In.setBackground(null);
+	 * In.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170,
+	 * sizeIn.width, sizeIn.height);
 	 * 
 	 * 
 	 * 
@@ -227,22 +260,16 @@ JLabel thumb = new JLabel();
 		System.out.println("Norea");
 		panel.removeAll();
 		panel.add(closeButton);
-		
-		
+
 		panel.repaint();
-		
-		
-		
-		
+
 	}
 
 	private void buttonActionScott() {
 		System.out.println("Scott");
 		panel.removeAll();
 		panel.add(closeButton);
-		
-		
-		
+
 		panel.repaint();
 
 	}
@@ -277,6 +304,10 @@ JLabel thumb = new JLabel();
 
 	public void buttonAction() {
 		textInfo.setText(textInfo.getText() + "<b style='color:#FFFFFF;'> <br>Use key button pressed!</b>");
+	}
+
+	public void buttonAction1() {
+		text.setText(text.getText() + "<b style='color:#FFFFFF;'> <br>text!</b>");
 	}
 
 	public void buttonActionClose() {

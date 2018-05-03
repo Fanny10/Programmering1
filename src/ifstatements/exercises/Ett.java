@@ -1,10 +1,12 @@
 package ifstatements.exercises;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Ett {
 
 	public static void main(String[] args) {
+	
 		// TODO Auto-generated method stub
 		Scanner userNumber = new Scanner(System.in);
 
@@ -18,7 +20,6 @@ public class Ett {
 		} else {
 			System.out.println("Bad");
 		}
-
 	}
 
 }
