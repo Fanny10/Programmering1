@@ -43,10 +43,12 @@ public class TestGame extends JFrame implements WindowListener {
 	private ImageIcon poopIcon8 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/kontor.JPG");
 	private ImageIcon poopIcon9 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/1.JPG");
 	private ImageIcon poopIcon10 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/sten.JPG");
+	private ImageIcon help = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/black-touchscreen-smartphone-24.png");
 
 	private JLabel imageLabel = new JLabel(poopIcon);
 
 	private JButton okButton = new JButton(poopIcon2);
+	private JButton helpButton = new JButton(help);
 	private JButton closeButton = new JButton("Close");
 	private JButton nextButton = new JButton("Next");
 	private JButton backButton = new JButton("B");
@@ -56,11 +58,13 @@ public class TestGame extends JFrame implements WindowListener {
 	private JButton In = new JButton(poopIcon3);
 	private Toolkit tk = Toolkit.getDefaultToolkit();
 	private JButton next1Button = new JButton("Next");
+	private JButton next2Button = new JButton("Next");
+	JLabel thumb1 = new JLabel();
 
 	private JLabel textInfo = new JLabel(".....");
 	private JLabel text = new JLabel(".....");
 
-	private int level = 1;
+	private int level = 0;
 
 	public TestGame() {
 		// Closes the program when x button is presseed.
@@ -103,53 +107,71 @@ public class TestGame extends JFrame implements WindowListener {
 		panel.setLayout(null);
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setBackground(Color.gray);
-
-		{ // close
-			panel.add(closeButton);
-			closeButton.addActionListener(e -> buttonActionClose());
-			closeButton.setMnemonic(KeyEvent.VK_C);
-			Dimension size = closeButton.getPreferredSize();
-			closeButton.setBounds(tk.getScreenSize().width - 200, 20, size.width, size.height);
-
-		}
-		// end of close
-
+		
 		panel.add(next1Button);
 		next1Button.addActionListener(e -> Next1());
 		Dimension size = next1Button.getPreferredSize();
 		next1Button.setBounds(1600, 1000, size.width, size.height);
+		{
+		
+		
+		
 
-		JLabel thumb1 = new JLabel();
-		thumb1.setIcon(poopIcon9);
-		Dimension sizeThumb1 = thumb1.getPreferredSize();
-		thumb1.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
-		panel.add(thumb1);
+	        // close
+			panel.add(closeButton);
+			closeButton.addActionListener(e -> buttonActionClose());
+			closeButton.setMnemonic(KeyEvent.VK_C);
+			Dimension size1 = closeButton.getPreferredSize();
+			closeButton.setBounds(tk.getScreenSize().width - 200, 20, size1.width, size1.height);
 
-	}
+		}
+		// end of close
+	
 
 	{
 		panel.add(text);
 		text.setFont(text.getFont().deriveFont(44.0f));
 		Dimension size9 = text.getPreferredSize();
-		//Postion X,Y Storlek X,Y
-		text.setBounds(600, 200, 800, 800);
-		text.setText("<html><body><b style='color:#fffff'> Welcome </b><br> 1 2 3 test hallå keö kfensb fbesb föjesb jkfeb </b>");
-		
-		//text.setHorizontalTextPosition(textPosition);
-		
-		
+		// Postion X,Y Storlek X,Y
+		text.setOpaque(true);
+		text.setBounds(500, 100, 900, 900);
+		text.setBackground(new Color(222, 220, 255));
+		text.setText(
+				"<html><body><b style='color:#ffff'>Welcome to ..... </b><br> The story takes place in the present time, in Brasov, Romania. <br> You have an important speech, buttime for general election </b>");
+
+		// text.setHorizontalTextPosition(textPosition);
+
 		// poopIcon = new
-		Border  matteBorder = BorderFactory.createMatteBorder(30,30,30,30, poopIcon10);
+		Border matteBorder = BorderFactory.createMatteBorder(30, 30, 30, 30, poopIcon10);
 		text.setBorder(matteBorder);
-		text.setBackground(Color.gray);
+	}
+	{
+		panel.add(thumb1);
+	
+		thumb1.setIcon(poopIcon9);
+		Dimension sizeThumb1 = thumb1.getPreferredSize();
+		thumb1.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
 		
+	
+	}
+	}
+	public void Next1() {
+		panel.removeAll();
+		panel.add(closeButton);
+		
+		panel.add(next2Button);
+		next2Button.addActionListener(e -> Next2());
+		Dimension size = next2Button.getPreferredSize();
+		next2Button.setBounds(1600, 1000, size.width, size.height);
+		panel.add(thumb1);
+		panel.repaint();
 	}
 
-	public void Next1() {
+	public void Next2() {
 
 		panel.removeAll();
 
-		panel.add(closeButton);
+		panel.add(closeButton); // lägger till en knapp som stänger hela fönstret.
 		System.out.println("next");
 		panel.add(textInfo);
 		textInfo.setFont(textInfo.getFont().deriveFont(44.0f));
@@ -176,7 +198,7 @@ public class TestGame extends JFrame implements WindowListener {
 		scott.setBounds(400, 200, size2.width, size2.height);
 		JLabel thumb = new JLabel();
 
-		thumb.setIcon(poopIcon9);
+		thumb.setIcon(poopIcon9); // bakgrundsbild
 		Dimension sizeThumb = thumb.getPreferredSize();
 		thumb.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
 		panel.add(thumb);
@@ -251,21 +273,36 @@ public class TestGame extends JFrame implements WindowListener {
 		textInfo.setText("<html><body>");
 
 	}
-
+	
 	public void upKeyPressed() {
 		System.out.println("Go up!");
 	}
+	
 
 	private void buttonActionNorea() {
+		level = 1;
 		System.out.println("Norea");
 		panel.removeAll();
 		panel.add(closeButton);
+		panel.add(In);
+		In.addActionListener(t-> buttonActionIn());  
+		Dimension sizeIn = In.getPreferredSize();
+		In.setBackground(null);
+		In.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn.width, sizeIn.height);
 
 		panel.repaint();
 
 	}
+	private void buttonActionIn() {
+		panel.removeAll();
+		panel.add(closeButton);
+		
+		panel.repaint();
+		
+	}
 
 	private void buttonActionScott() {
+		level=1;
 		System.out.println("Scott");
 		panel.removeAll();
 		panel.add(closeButton);
