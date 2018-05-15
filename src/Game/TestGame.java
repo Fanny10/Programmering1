@@ -33,21 +33,32 @@ public class TestGame extends JFrame implements WindowListener {
 	private JPanel panel = new JPanel();
 
 	private ImageIcon poopIcon = new ImageIcon("C:/Users/jonas.andree/Desktop/poop.jpeg");
-	private ImageIcon poopIcon1 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/red-error-158.png");
+	private ImageIcon poopIcon1 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/red-error-158.png"); 
 	private ImageIcon poopIcon2 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/red-invisible-16.png");
-	private ImageIcon poopIcon3 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/black-shoping-bag-90.png");
-	private ImageIcon poopIcon4 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/norea.png");
-	private ImageIcon poopIcon5 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/Scott.png");
-	private ImageIcon poopIcon6 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/kontor1.png");
-	private ImageIcon poopIcon7 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/trappa.JPG");
-	private ImageIcon poopIcon8 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/kontor.JPG");
-	private ImageIcon poopIcon9 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/1.JPG");
-	private ImageIcon poopIcon10 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/sten.JPG");
-	private ImageIcon help = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/black-touchscreen-smartphone-24.png");
+	private ImageIcon poopIcon3 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/black-shoping-bag-90.png"); //inventory
+	private ImageIcon poopIcon4 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/norea.png");//norea
+	private ImageIcon poopIcon5 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/Scott.png");//scott
+	private ImageIcon poopIcon6 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/kontor1.png");//kontor
+	private ImageIcon poopIcon7 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/trappa.JPG");//trappan upp
+	private ImageIcon poopIcon8 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/kontor.JPG");//kontor
+	private ImageIcon poopIcon9 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/1.JPG");//bilden i början
+	private ImageIcon poopIcon10 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/sten.JPG");// sten mur
+	private ImageIcon help = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/black-touchscreen-smartphone-24.png");// mobil
+	private ImageIcon klocka = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/klocka.png"); //klock bild
+	
+	
+	//inventory
+	private ImageIcon inventorybild = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/inventory.png"); //bakgrundbild
+	private ImageIcon key = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/black-key-50.png");
 
+	private int key1 = 0;// nyckeln till garderoben
+	
+	//Knappar
 	private JLabel imageLabel = new JLabel(poopIcon);
-
+	
 	private JButton okButton = new JButton(poopIcon2);
+	private JButton nyckel = new JButton("skaffa nyckel");
+	//private JButton nyckel1 = new JButton(key);
 	private JButton helpButton = new JButton(help);
 	private JButton closeButton = new JButton("Close");
 	private JButton nextButton = new JButton("Next");
@@ -56,10 +67,16 @@ public class TestGame extends JFrame implements WindowListener {
 	private JButton scott = new JButton(poopIcon5);
 	private JButton norea = new JButton(poopIcon4);
 	private JButton In = new JButton(poopIcon3);
+	private JButton In1 = new JButton(poopIcon3);
 	private Toolkit tk = Toolkit.getDefaultToolkit();
 	private JButton next1Button = new JButton("Next");
 	private JButton next2Button = new JButton("Next");
+	private JButton next3Button = new JButton("Next");
 	JLabel thumb1 = new JLabel();
+	JLabel thumb2 = new JLabel();
+	JLabel thumb3 = new JLabel();
+	JLabel thumb4 = new JLabel();
+	
 
 	private JLabel textInfo = new JLabel(".....");
 	private JLabel text = new JLabel(".....");
@@ -136,8 +153,7 @@ public class TestGame extends JFrame implements WindowListener {
 		text.setOpaque(true);
 		text.setBounds(500, 100, 900, 900);
 		text.setBackground(new Color(222, 220, 255));
-		text.setText(
-				"<html><body><b style='color:#ffff'>Welcome to ..... </b><br> The story takes place in the present time, in Brasov, Romania. <br> You have an important speech, buttime for general election </b>");
+		text.setText("<html><body><b style='color:#ffff'>Welcome to ..... </b><br> The story takes place in the present time, in Brasov, Romania. <br> You have an important speech, buttime for general election </b>");
 
 		// text.setHorizontalTextPosition(textPosition);
 
@@ -145,7 +161,9 @@ public class TestGame extends JFrame implements WindowListener {
 		Border matteBorder = BorderFactory.createMatteBorder(30, 30, 30, 30, poopIcon10);
 		text.setBorder(matteBorder);
 	}
+	
 	{
+	
 		panel.add(thumb1);
 	
 		thumb1.setIcon(poopIcon9);
@@ -158,6 +176,15 @@ public class TestGame extends JFrame implements WindowListener {
 	public void Next1() {
 		panel.removeAll();
 		panel.add(closeButton);
+		panel.add(text);
+		text.setFont(text.getFont().deriveFont(44.0f));
+		Dimension size9 = text.getPreferredSize();
+		// Postion X,Y Storlek X,Y
+		text.setOpaque(true);
+		text.setBounds(500, 100, 900, 900);
+		text.setBackground(new Color(222, 220, 255));
+		text.setText("<html><body><b style='color:#ffff'>Welcome to ..... </b><br> The last thing you remember was that you were on your way home late. \n After writing your speech \n and after that Everything black </b>");
+
 		
 		panel.add(next2Button);
 		next2Button.addActionListener(e -> Next2());
@@ -280,8 +307,39 @@ public class TestGame extends JFrame implements WindowListener {
 	
 
 	private void buttonActionNorea() {
+		panel.removeAll();
 		level = 1;
 		System.out.println("Norea");
+		
+		panel.add(closeButton);
+		panel.add(next3Button);
+		next3Button.addActionListener(w -> Next3button());
+		Dimension size = next3Button.getPreferredSize();
+		next3Button.setBounds(1600, 1000, size.width, size.height);
+		panel.add(text);
+		text.setFont(text.getFont().deriveFont(44.0f));
+		Dimension size9 = text.getPreferredSize();
+		// Postion X,Y Storlek X,Y
+		text.setOpaque(true);
+		text.setBounds(500, 100, 900, 900);
+		text.setBackground(new Color(222, 220, 255));
+		text.setText("<html><body><b style='color:#ffff'>You walk up and wonder, where am I ? </b><br>You wonder what the time is... You see a clock,  it was 7 am. You have your life's most important speech 7pm at the plaza. You must out and came in time to the general election.</b>");
+		
+		
+		
+		
+		panel.add(thumb2);
+		
+		thumb2.setIcon(klocka);
+		Dimension sizeThumb2 = thumb2.getPreferredSize();
+		thumb2.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+		panel.repaint();
+
+	}
+	
+		
+	
+	private void Next3button() {
 		panel.removeAll();
 		panel.add(closeButton);
 		panel.add(In);
@@ -289,13 +347,52 @@ public class TestGame extends JFrame implements WindowListener {
 		Dimension sizeIn = In.getPreferredSize();
 		In.setBackground(null);
 		In.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn.width, sizeIn.height);
-
+		
+		panel.add(nyckel);
+		nyckel.addActionListener(q -> Next4button());
+		Dimension size3 = nyckel.getPreferredSize();
+		nyckel.setBounds(700, 100, size3.width, size3.height);
+		
+		panel.add(thumb4);
+		
+		thumb4.setIcon(poopIcon6);
+		Dimension sizeThumb4 = thumb4.getPreferredSize();
+		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+		
+		
 		panel.repaint();
-
+		
+	}private void Next4button() {
+		key1 = 1;
+		
 	}
 	private void buttonActionIn() {
 		panel.removeAll();
 		panel.add(closeButton);
+		
+		
+		if(key1 == 1) {
+			panel.add(imageLabel);
+			
+			imageLabel.setIcon(key);
+			Dimension size6 = imageLabel.getPreferredSize();
+			imageLabel.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+			
+		}else {
+			
+		}
+		
+		panel.add(In1);
+		In1.addActionListener(l-> Next3button());  
+		Dimension sizeIn1 = In1.getPreferredSize();
+		In1.setBackground(null);
+		In1.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn1.width, sizeIn1.height);
+		
+		panel.add(thumb3);
+		thumb3.setIcon(inventorybild); // bakgrundsbild
+		Dimension sizeThumb = thumb3.getPreferredSize();
+		thumb3.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+		
 		
 		panel.repaint();
 		
