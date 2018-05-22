@@ -42,7 +42,10 @@ public class Spel {
 			if (jaEllerNej.equalsIgnoreCase("ja")) {
 				level1();
 				break;
-			} else {
+			} else if(jaEllerNej.equalsIgnoreCase("nej")) {
+				JOptionPane.showMessageDialog(null, "fel svar");
+				
+			}else {
 				JOptionPane.showMessageDialog(null, "börja om");
 
 			}

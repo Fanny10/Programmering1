@@ -31,22 +31,22 @@ import javax.swing.KeyStroke;
 import javax.swing.border.Border;
 import javafx.scene.layout.Background;
 
-public class TestGame extends JFrame  implements WindowListener {
+public class TestGame extends JFrame implements WindowListener {
 	private JPanel panel = new JPanel();
 
 	private ImageIcon poopIcon = new ImageIcon("C:/Users/jonas.andree/Desktop/poop.jpeg");
-	private ImageIcon poopIcon1 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/red-error-158.png"); 
+	private ImageIcon poopIcon1 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/red-error-158.png");
 	private ImageIcon poopIcon2 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/red-invisible-16.png");
-	private ImageIcon poopIcon3 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/black-shoping-bag-90.png"); //inventory
-	private ImageIcon poopIcon4 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/norea.png");//norea
-	private ImageIcon poopIcon5 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/Scott.png");//scott
-	private ImageIcon poopIcon6 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/kontor1.png");//kontor
-	private ImageIcon poopIcon7 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/trappa.JPG");//trappan upp
-	private ImageIcon poopIcon8 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/kontor.JPG");//kontor
-	private ImageIcon poopIcon9 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/1.JPG");//bilden i början
+	private ImageIcon poopIcon3 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/black-shoping-bag-90.png"); // inventory
+	private ImageIcon poopIcon4 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/norea.png");// norea
+	private ImageIcon poopIcon5 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/Scott.png");// scott
+	private ImageIcon poopIcon6 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/kontor1.png");// kontor
+	private ImageIcon poopIcon7 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/trappa.JPG");// trappan upp
+	private ImageIcon poopIcon8 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/kontor.JPG");// kontor
+	private ImageIcon poopIcon9 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/1.JPG");// bilden i början
 	private ImageIcon poopIcon10 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/sten.JPG");// sten mur
 	private ImageIcon help = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/black-touchscreen-smartphone-24.png");// mobil
-	private ImageIcon klocka = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/klocka.png"); //klock bild
+	private ImageIcon klocka = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/klocka.png"); // klock bild
 	private ImageIcon vardagsrum11 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/vardagsrum1.1.png");
 	private ImageIcon vardagsrum12 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/vardagsrum1.2.png");
 	private ImageIcon svart = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/vardagsrum1.svart.png");
@@ -54,25 +54,28 @@ public class TestGame extends JFrame  implements WindowListener {
 	private ImageIcon vardagsrum1 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/vardagsrum2.png");
 	private ImageIcon vardagsrum2 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/vardagsrum3.png");
 	private ImageIcon vardagsrum3 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/vardagsrum4.png");
-	
-	private ImageIcon badrum1= new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/badrum1.png");
+
+	private ImageIcon badrum1 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/badrum1.png");
 	private ImageIcon badrum2 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/badrum2.png");
 	private ImageIcon badrum3 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/badrum3.png");
 	
-	
-	//inventory
-	private ImageIcon inventorybild = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/inventory.png"); //bakgrundbild
+	private ImageIcon sovrum1 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/sovrum1.1.png");
+
+	// inventory
+	private ImageIcon inventorybild = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/inventory.png"); // bakgrundbild
 	private ImageIcon key = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/black-key-50.png");
 
 	private int key1 = 0;// nyckeln till garderoben
-	
-	//Knappar
+
+	// Knappar
 	private JLabel imageLabel = new JLabel(poopIcon);
-	
+	private JButton dorr = new JButton("open");
 	private JButton okButton = new JButton(poopIcon2);
 	private JButton nyckel = new JButton("skaffa nyckel");
-	//private JButton nyckel1 = new JButton(key);
+	// private JButton nyckel1 = new JButton(key);
 	private JButton helpButton = new JButton(help);
+	private JButton right = new JButton("Right");
+	private JButton left = new JButton("Left");
 	private JButton closeButton = new JButton("Close");
 	private JButton nextButton = new JButton("Next");
 	private JButton backButton = new JButton("B");
@@ -81,24 +84,25 @@ public class TestGame extends JFrame  implements WindowListener {
 	private JButton norea = new JButton(poopIcon4);
 	private JButton In = new JButton(poopIcon3);
 	private JButton In1 = new JButton(poopIcon3);
+	private JButton In2 = new JButton(poopIcon3);
+	private JButton In3 = new JButton(poopIcon3);
+	private JButton In4 = new JButton(poopIcon3);
 	private Toolkit tk = Toolkit.getDefaultToolkit();
 	private JButton next1Button = new JButton("Next");
 	private JButton next2Button = new JButton("Next");
 	private JButton next3Button = new JButton("Next");
-	private Timer timer = null;
+	private Timer timer1 = null;
 	JLabel thumb1 = new JLabel();
 	JLabel thumb2 = new JLabel();
 	JLabel thumb3 = new JLabel();
 	JLabel thumb4 = new JLabel();
 	JLabel thumb5 = new JLabel();
-	
-	
-	
-	
+	private boolean stopTimer2 = true;
 
 	private JLabel textInfo = new JLabel(".....");
 	private JLabel text = new JLabel(".....");
 
+	private int vLevel = 0;
 	private int level = 0;
 
 	public TestGame() {
@@ -136,26 +140,21 @@ public class TestGame extends JFrame  implements WindowListener {
 	 * 
 	 * @param contentPane
 	 */
-	 
-		   
+
 	public void addComp(Container contentPane) {
 
 		// panel
 		panel.setLayout(null);
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setBackground(Color.gray);
-		
-		
+
 		panel.add(next1Button);
 		next1Button.addActionListener(e -> Next1());
 		Dimension size = next1Button.getPreferredSize();
 		next1Button.setBounds(1600, 1000, size.width, size.height);
 		{
-		
-		
-		
 
-	        // close
+			// close
 			panel.add(closeButton);
 			closeButton.addActionListener(e -> buttonActionClose());
 			closeButton.setMnemonic(KeyEvent.VK_C);
@@ -164,36 +163,36 @@ public class TestGame extends JFrame  implements WindowListener {
 
 		}
 		// end of close
-	
 
-	{
-		panel.add(text);
-		text.setFont(text.getFont().deriveFont(44.0f));
-		Dimension size9 = text.getPreferredSize();
-		// Postion X,Y Storlek X,Y
-		text.setOpaque(true);
-		text.setBounds(500, 100, 900, 900);
-		text.setBackground(new Color(222, 220, 255));
-		text.setText("<html><body><b style='color:#ffff'>Welcome to ..... </b><br> The story takes place in the present time, in Brasov, Romania. <br> You have an important speech, buttime for general election </b>");
+		{
+			panel.add(text);
+			text.setFont(text.getFont().deriveFont(44.0f));
+			Dimension size9 = text.getPreferredSize();
+			// Postion X,Y Storlek X,Y
+			text.setOpaque(true);
+			text.setBounds(500, 100, 900, 900);
+			text.setBackground(new Color(222, 220, 255));
+			text.setText(
+					"<html><body><b style='color:#ffff'>Welcome to ..... </b><br> The story takes place in the present time, in Brasov, Romania. <br> You have an important speech, for general election </b>");
 
-		// text.setHorizontalTextPosition(textPosition);
+			// text.setHorizontalTextPosition(textPosition);
 
-		// poopIcon = new
-		Border matteBorder = BorderFactory.createMatteBorder(30, 30, 30, 30, poopIcon10);
-		text.setBorder(matteBorder);
+			// poopIcon = new
+			Border matteBorder = BorderFactory.createMatteBorder(30, 30, 30, 30, poopIcon10);
+			text.setBorder(matteBorder);
+		}
+
+		{
+
+			panel.add(thumb1);
+
+			thumb1.setIcon(poopIcon9);
+			Dimension sizeThumb1 = thumb1.getPreferredSize();
+			thumb1.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+
+		}
 	}
-	
-	{
-	
-		panel.add(thumb1);
-	
-		thumb1.setIcon(poopIcon9);
-		Dimension sizeThumb1 = thumb1.getPreferredSize();
-		thumb1.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
-		
-	
-	}
-	}
+
 	public void Next1() {
 		panel.removeAll();
 		panel.add(closeButton);
@@ -204,9 +203,9 @@ public class TestGame extends JFrame  implements WindowListener {
 		text.setOpaque(true);
 		text.setBounds(500, 100, 900, 900);
 		text.setBackground(new Color(222, 220, 255));
-		text.setText("<html><body><b style='color:#ffff'>Welcome to ..... </b><br> The last thing you remember was that you were on your way home late. \n After writing your speech \n and after that Everything black </b>");
+		text.setText(
+				"<html><body><b style='color:#ffff'>Welcome to ..... </b><br> The last thing you remember was that you were on your way home, late at night. \n After writing your speech \n and after that Everything gets black </b>");
 
-		
 		panel.add(next2Button);
 		next2Button.addActionListener(e -> Next2());
 		Dimension size = next2Button.getPreferredSize();
@@ -321,17 +320,15 @@ public class TestGame extends JFrame  implements WindowListener {
 		textInfo.setText("<html><body>");
 
 	}
-	
+
 	public void upKeyPressed() {
 		System.out.println("Go up!");
 	}
-	
 
 	private void buttonActionNorea() {
 		panel.removeAll();
-		level = 1;
 		System.out.println("Norea");
-		
+
 		panel.add(closeButton);
 		panel.add(next3Button);
 		next3Button.addActionListener(o -> uppVakning());
@@ -344,131 +341,330 @@ public class TestGame extends JFrame  implements WindowListener {
 		text.setOpaque(true);
 		text.setBounds(500, 100, 900, 900);
 		text.setBackground(new Color(222, 220, 255));
-		text.setText("<html><body><b style='color:#ffff'>You walk up and wonder, where am I ? </b><br>You wonder what the time is... You see a clock,  it was 7 am. You have your life's most important speech 7pm at the plaza. You must out and came in time to the general election.</b>");
-		
+		text.setText(
+				"<html><body><b style='color:#ffff'>You walk up and wonder, where am I ? </b><br>You wonder what the time is... You see a clock,  it was 7 am. You have your life's most important speech 7pm at the plaza. You must out and came in time to the general election.</b>");
+
 		panel.add(thumb2);
-		
+
 		thumb2.setIcon(klocka);
 		Dimension sizeThumb2 = thumb2.getPreferredSize();
 		thumb2.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
 		panel.repaint();
 
 	}
-	private void timer() {
-	
-		 new JFrame().setVisible(true);
-		    ActionListener actionListener = new ActionListener() {
-		      public void actionPerformed(ActionEvent actionEvent) {
-		    	  
-		    	  
-		      }
-		    };
-		    Timer timer = new Timer(500, actionListener);
-		    timer.start();
-		  }
+	/*
+	 * private void timer() {
+	 * 
+	 * new JFrame().setVisible(true); ActionListener actionListener = new
+	 * ActionListener() { public void actionPerformed(ActionEvent actionEvent) {
+	 * 
+	 * 
+	 * } }; Timer timer = new Timer(500, actionListener); timer.start(); }
+	 * 
+	 */
 
-
-
-
-	
-
-	
 	private void uppVakning() {
-		
-		//SetIcon...
-		//sleep...
-		
-		//Set Next Icon
-		//sleep..
+
+		// SetIcon...
+		// sleep...
+
+		// Set Next Icon
+		// sleep..
 		panel.removeAll();
-  		thumb5.setIcon(vardagsrum11);
-  		System.out.println("Timer!");
-  		thumb5.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
-  		panel.add(thumb5);
-  		panel.repaint();
-		
-		
+		thumb5.setIcon(svart);
+
+		thumb5.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+		panel.add(thumb5);
+		panel.repaint();
+
 		Timer t = new Timer(1000, new ActionListener() {
-		      public void actionPerformed(ActionEvent actionEvent) {
-		    	  panel.removeAll();
-			  		thumb5.setIcon(vardagsrum12);
-			  		System.out.println("Timer!");
-			  		thumb5.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
-			  		panel.add(thumb5);
-			  		panel.repaint();
-		      }
-		    });
+			public void actionPerformed(ActionEvent actionEvent) {
+				panel.removeAll();
+				thumb5.setIcon(vardagsrum12);
+
+				thumb5.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+				panel.add(thumb5);
+				panel.repaint();
+
+			}
+		});
 		t.start();
+		Timer ti = new Timer(1400, new ActionListener() {
+			public void actionPerformed(ActionEvent actionEvent) {
+				thumb5.setIcon(vardagsrum11);
+
+				thumb5.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+				panel.add(thumb5);
+				panel.repaint();
+				t.stop();
+
+			}
+		});
+		ti.start();
+		Timer tim = new Timer(1600, new ActionListener() {
+			public void actionPerformed(ActionEvent actionEvent) {
+				panel.removeAll();
+				thumb5.setIcon(vardagsrum12);
+				panel.add(thumb5);
+				panel.repaint();
+				ti.stop();
+			}
+		});
+		tim.start();
+
+		Timer time = new Timer(1900, new ActionListener() {
+			public void actionPerformed(ActionEvent actionEvent) {
+				thumb5.setIcon(vardagsrum11);
+
+				thumb5.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+				panel.add(thumb5);
+				panel.repaint();
+				tim.stop();
+			}
+		});
+
+		time.start();
 		
-		//thumb5.setIcon(poopIcon9);
-		//System.out.println("uppVakning: ");
-		//panel.repaint();
-		//sleep(1000);
-		//this.next3Button();
+		timer1 = new Timer(2000, new ActionListener() {
+			public void actionPerformed(ActionEvent actionEvent) {
+				stopTimer();
+				time.stop();
+			}
+		});
+		timer1.start();
+		
+		
+
 	}
-		
-	
-	private void next3Button() {
+	private void stopTimer() {
+		vRum0start();
+	}
+
+	private void vRum0start() {
 		panel.removeAll();
 		panel.add(closeButton);
+
+		panel.add(right);
+		right.addActionListener(n -> goRight());
+		Dimension sizeRight = right.getPreferredSize();
+		right.setBackground(null);
+		right.setBounds(1690, 210, sizeRight.width,
+				sizeRight.height);
+
+		panel.add(left);
+		left.addActionListener(n -> goLeft());
+		Dimension sizeLeft = left.getPreferredSize();
+		left.setBackground(null);
+		left.setBounds(290, 210, sizeLeft.width, sizeLeft.height);
+
 		panel.add(In);
-		In.addActionListener(t-> buttonActionIn());  
+		In.addActionListener(t -> buttonActionIn());
 		Dimension sizeIn = In.getPreferredSize();
 		In.setBackground(null);
 		In.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn.width, sizeIn.height);
-		
+
 		panel.add(nyckel);
 		nyckel.addActionListener(q -> next4Button());
 		Dimension size3 = nyckel.getPreferredSize();
 		nyckel.setBounds(700, 100, size3.width, size3.height);
-		
+
 		panel.add(thumb4);
-		
+
 		thumb4.setIcon(vardagsrum);
 		Dimension sizeThumb4 = thumb4.getPreferredSize();
 		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+
+		panel.repaint();
+		if (stopTimer2) {
+			timer1.stop();
+			stopTimer2 = false;
+		}
+		
+	}
+	private void vRum0() {
+		panel.removeAll();
+		panel.add(closeButton);
+		panel.add(In);
+		panel.add(left);
+		panel.add(right);
+		panel.add(nyckel);
+		
+		panel.add(thumb4);
+		thumb4.setIcon(vardagsrum);
+		Dimension sizeThumb4 = thumb4.getPreferredSize();
+		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+
 		
 		
 		panel.repaint();
-		
-	}private void next4Button() {
-		key1 = 1;
-		
 	}
-	private void buttonActionIn() {
+	private void goRight() {
+		System.out.println("goRight1: "+vLevel);
+		if (vLevel == 0)
+			vLevel = 1;
+		else if (vLevel == 1)
+			vLevel = 2;
+		else if (vLevel == 2) 
+			vLevel = 3;
+		else if(vLevel == 3)
+			vLevel = 0;
+			
+		System.out.println("goRight2: "+vLevel);
+		
+		levelLoader();
+	}
+
+	private void goLeft() {
+		if (vLevel == 0)
+			vLevel = 3;
+		else if (vLevel == 1)
+			vLevel = 0;
+		else if (vLevel == 2) 
+			vLevel = 1;
+		else if(vLevel == 3)
+			vLevel = 2; 
+		levelLoader();
+	}
+	private void levelLoader() {
+		if(vLevel == 0) {
+			vRum0();
+		}else if(vLevel == 1) {
+			vRum1();
+		}else if(vLevel == 2) {
+			vRum2();
+		}else if(vLevel == 3) {
+			vRum3();
+		}
+	}
+	
+	private void vRum1() {
+		panel.removeAll();
+		panel.add(closeButton);
+		panel.add(right);
+		panel.add(left);
+		panel.add(In);
+		
+		panel.add(thumb4);
+
+		thumb4.setIcon(vardagsrum1);
+		Dimension sizeThumb4 = thumb4.getPreferredSize();
+		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+
+		
+
+		panel.repaint();
+	}
+	private void vRum2() {
+		panel.removeAll();
+		panel.add(closeButton);
+		panel.add(right);
+		panel.add(left);
+		
+		panel.add(In);
+		
+		panel.add(thumb4);
+
+		thumb4.setIcon(vardagsrum3);
+		Dimension sizeThumb4 = thumb4.getPreferredSize();
+		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+
+
+		panel.repaint();
+	}
+	private void vRum3() {
+		panel.removeAll();
+		panel.add(closeButton);
+		panel.add(right);
+		panel.add(left);
+		
+		panel.add(In);
+		panel.add(dorr);
+		dorr.addActionListener(k -> lRum0());
+		Dimension sizeDorr = dorr.getPreferredSize();
+		dorr.setBackground(null);
+		dorr.setBounds( 720, 190, sizeDorr.width,sizeDorr.height);
+		
+		panel.add(thumb4);
+
+		thumb4.setIcon(vardagsrum2);
+		Dimension sizeThumb4 = thumb4.getPreferredSize();
+		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+
+
+		panel.repaint();
+	}
+	private void lRum0() {
 		panel.removeAll();
 		panel.add(closeButton);
 		
+		panel.add(thumb4);
+
+		thumb4.setIcon(sovrum1);
+		Dimension sizeThumb4 = thumb4.getPreferredSize();
+		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+
 		
-		if(key1 == 1) {
+		panel.repaint();
+	}
+
+	private void next4Button() {
+		key1 = 1;
+
+	}
+
+	private void buttonActionIn() {
+		panel.removeAll();
+		panel.add(closeButton);
+		System.out.println(level);
+		if (key1 == 1) {
 			panel.add(imageLabel);
-			
+
 			imageLabel.setIcon(key);
 			Dimension size6 = imageLabel.getPreferredSize();
 			imageLabel.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
-			
-		}else {
-			
+
 		}
-		
-		panel.add(In1);
-		In1.addActionListener(l-> next3Button());  
-		Dimension sizeIn1 = In1.getPreferredSize();
-		In1.setBackground(null);
-		In1.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn1.width, sizeIn1.height);
-		
+
+		if (vLevel == 0) {
+			panel.add(In1);
+			In1.addActionListener(l -> vRum0());
+			Dimension sizeIn1 = In1.getPreferredSize();
+			In1.setBackground(null);
+			In1.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn1.width,
+					sizeIn1.height);
+		} else if (vLevel == 1) {
+			panel.add(In2);
+			In2.addActionListener(o -> vRum1());
+			Dimension sizeIn2 = In2.getPreferredSize();
+			In2.setBackground(null);
+			In2.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn2.width,
+					sizeIn2.height);
+		} else if (vLevel == 2) {
+			panel.add(In3);
+			In3.addActionListener(k -> vRum2());
+			Dimension sizeIn3 = In3.getPreferredSize();
+			In3.setBackground(null);
+			In3.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn3.width,
+					sizeIn3.height);
+		}else if(vLevel == 3) {
+			panel.add(In4);
+			In4.addActionListener(k -> vRum3());
+			Dimension sizeIn4 = In4.getPreferredSize();
+			In4.setBackground(null);
+			In4.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn4.width,
+					sizeIn4.height);
+		}
 		panel.add(thumb3);
 		thumb3.setIcon(inventorybild); // bakgrundsbild
 		Dimension sizeThumb = thumb3.getPreferredSize();
 		thumb3.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
 
-	    
 		panel.repaint();
-		
+
 	}
 
 	private void buttonActionScott() {
-		level=1;
+		level = 1;
 		System.out.println("Scott");
 		panel.removeAll();
 		panel.add(closeButton);
