@@ -58,8 +58,11 @@ public class TestGame extends JFrame implements WindowListener {
 	private ImageIcon badrum1 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/badrum1.png");
 	private ImageIcon badrum2 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/badrum2.png");
 	private ImageIcon badrum3 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/badrum3.png");
-	
+
 	private ImageIcon sovrum1 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/sovrum1.1.png");
+	private ImageIcon sovrum12 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/sovrum1.2.png");
+	private ImageIcon sovrum13 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/sovrum1.3.png");
+	private ImageIcon sovrum14 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/sovrum1.4.png");
 
 	// inventory
 	private ImageIcon inventorybild = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/inventory.png"); // bakgrundbild
@@ -70,6 +73,7 @@ public class TestGame extends JFrame implements WindowListener {
 	// Knappar
 	private JLabel imageLabel = new JLabel(poopIcon);
 	private JButton dorr = new JButton("open");
+	private JButton dorr1 = new JButton("open");
 	private JButton okButton = new JButton(poopIcon2);
 	private JButton nyckel = new JButton("skaffa nyckel");
 	// private JButton nyckel1 = new JButton(key);
@@ -87,6 +91,10 @@ public class TestGame extends JFrame implements WindowListener {
 	private JButton In2 = new JButton(poopIcon3);
 	private JButton In3 = new JButton(poopIcon3);
 	private JButton In4 = new JButton(poopIcon3);
+	private JButton In5 = new JButton(poopIcon3);
+	private JButton In6 = new JButton(poopIcon3);
+	private JButton In7 = new JButton(poopIcon3);
+	private JButton In8 = new JButton(poopIcon3);
 	private Toolkit tk = Toolkit.getDefaultToolkit();
 	private JButton next1Button = new JButton("Next");
 	private JButton next2Button = new JButton("Next");
@@ -103,7 +111,9 @@ public class TestGame extends JFrame implements WindowListener {
 	private JLabel text = new JLabel(".....");
 
 	private int vLevel = 0;
+	private int sLevel = 0;
 	private int level = 0;
+	private String room = "vRum";
 
 	public TestGame() {
 		// Closes the program when x button is presseed.
@@ -424,7 +434,7 @@ public class TestGame extends JFrame implements WindowListener {
 		});
 
 		time.start();
-		
+
 		timer1 = new Timer(2000, new ActionListener() {
 			public void actionPerformed(ActionEvent actionEvent) {
 				stopTimer();
@@ -432,15 +442,15 @@ public class TestGame extends JFrame implements WindowListener {
 			}
 		});
 		timer1.start();
-		
-		
 
 	}
+
 	private void stopTimer() {
 		vRum0start();
 	}
 
 	private void vRum0start() {
+		room = "vRum";
 		panel.removeAll();
 		panel.add(closeButton);
 
@@ -448,8 +458,7 @@ public class TestGame extends JFrame implements WindowListener {
 		right.addActionListener(n -> goRight());
 		Dimension sizeRight = right.getPreferredSize();
 		right.setBackground(null);
-		right.setBounds(1690, 210, sizeRight.width,
-				sizeRight.height);
+		right.setBounds(1690, 210, sizeRight.width, sizeRight.height);
 
 		panel.add(left);
 		left.addActionListener(n -> goLeft());
@@ -479,8 +488,9 @@ public class TestGame extends JFrame implements WindowListener {
 			timer1.stop();
 			stopTimer2 = false;
 		}
-		
+
 	}
+
 	private void vRum0() {
 		panel.removeAll();
 		panel.add(closeButton);
@@ -488,122 +498,229 @@ public class TestGame extends JFrame implements WindowListener {
 		panel.add(left);
 		panel.add(right);
 		panel.add(nyckel);
-		
+
 		panel.add(thumb4);
 		thumb4.setIcon(vardagsrum);
 		Dimension sizeThumb4 = thumb4.getPreferredSize();
 		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
 
-		
-		
 		panel.repaint();
 	}
+
 	private void goRight() {
-		System.out.println("goRight1: "+vLevel);
-		if (vLevel == 0)
-			vLevel = 1;
-		else if (vLevel == 1)
-			vLevel = 2;
-		else if (vLevel == 2) 
-			vLevel = 3;
-		else if(vLevel == 3)
-			vLevel = 0;
-			
-		System.out.println("goRight2: "+vLevel);
-		
+		System.out.println("goRight1: " + vLevel);
+		// Vardagsrum
+
+		if (room.equals("vRum")) {
+			if (vLevel == 0)
+				vLevel = 1;
+			else if (vLevel == 1)
+				vLevel = 2;
+			else if (vLevel == 2)
+				vLevel = 3;
+			else if (vLevel == 3)
+				vLevel = 0;
+
+		}
+		// Sovrum 1
+		else if (room.equals("sRum")) {
+			if (sLevel == 0)
+				sLevel = 1;
+			else if (sLevel == 1)
+				sLevel = 2;
+			else if (sLevel == 2)
+				sLevel = 3;
+			else if (sLevel == 3)
+				sLevel = 0;
+		}
 		levelLoader();
 	}
 
 	private void goLeft() {
-		if (vLevel == 0)
-			vLevel = 3;
-		else if (vLevel == 1)
-			vLevel = 0;
-		else if (vLevel == 2) 
-			vLevel = 1;
-		else if(vLevel == 3)
-			vLevel = 2; 
+		// Vardagsrum
+		if (room.equals("vRum")) {
+			if (vLevel == 0)
+				vLevel = 3;
+			else if (vLevel == 1)
+				vLevel = 0;
+			else if (vLevel == 2)
+				vLevel = 1;
+			else if (vLevel == 3)
+				vLevel = 2;
+
+		}
+		// Sovrum 1
+		else if (room.equals("sRum")) {
+			if (sLevel == 0)
+				sLevel = 3;
+			else if (sLevel == 1)
+				sLevel = 0;
+			else if (sLevel == 2)
+				sLevel = 1;
+			else if (sLevel == 3)
+				sLevel = 2;
+
+		}
 		levelLoader();
 	}
+
 	private void levelLoader() {
-		if(vLevel == 0) {
-			vRum0();
-		}else if(vLevel == 1) {
-			vRum1();
-		}else if(vLevel == 2) {
-			vRum2();
-		}else if(vLevel == 3) {
-			vRum3();
+		// Vardagsrum
+		if (room.equals("vRum")) {
+			if (vLevel == 0) {
+				vRum0();
+			} else if (vLevel == 1) {
+				vRum1();
+			} else if (vLevel == 2) {
+				vRum2();
+			} else if (vLevel == 3) {
+				vRum3();
+			}
+		} else if (room.equals("sRum")) {
+			if (sLevel == 0) {
+				s1Rum1();
+			} else if (sLevel == 1) {
+				s1Rum2();
+			} else if (sLevel == 2) {
+				s1Rum3();
+			} else if (sLevel == 3) {
+				s1Rum4();
+			}
 		}
 	}
-	
-	private void vRum1() {
+
+	// Sovrum 1
+	private void s1Rum1() {
+		room = "sRum";
 		panel.removeAll();
 		panel.add(closeButton);
 		panel.add(right);
 		panel.add(left);
 		panel.add(In);
-		
-		panel.add(thumb4);
 
-		thumb4.setIcon(vardagsrum1);
-		Dimension sizeThumb4 = thumb4.getPreferredSize();
-		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
-
-		
-
-		panel.repaint();
-	}
-	private void vRum2() {
-		panel.removeAll();
-		panel.add(closeButton);
-		panel.add(right);
-		panel.add(left);
-		
-		panel.add(In);
-		
-		panel.add(thumb4);
-
-		thumb4.setIcon(vardagsrum3);
-		Dimension sizeThumb4 = thumb4.getPreferredSize();
-		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
-
-
-		panel.repaint();
-	}
-	private void vRum3() {
-		panel.removeAll();
-		panel.add(closeButton);
-		panel.add(right);
-		panel.add(left);
-		
-		panel.add(In);
-		panel.add(dorr);
-		dorr.addActionListener(k -> lRum0());
-		Dimension sizeDorr = dorr.getPreferredSize();
-		dorr.setBackground(null);
-		dorr.setBounds( 720, 190, sizeDorr.width,sizeDorr.height);
-		
-		panel.add(thumb4);
-
-		thumb4.setIcon(vardagsrum2);
-		Dimension sizeThumb4 = thumb4.getPreferredSize();
-		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
-
-
-		panel.repaint();
-	}
-	private void lRum0() {
-		panel.removeAll();
-		panel.add(closeButton);
-		
 		panel.add(thumb4);
 
 		thumb4.setIcon(sovrum1);
 		Dimension sizeThumb4 = thumb4.getPreferredSize();
 		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
 
-		
+		panel.repaint();
+	}
+
+	private void s1Rum2() {
+		room = "sRum";
+		panel.removeAll();
+		panel.add(closeButton);
+		panel.add(right);
+		panel.add(left);
+		panel.add(In);
+
+		panel.add(thumb4);
+
+		thumb4.setIcon(sovrum13);
+		Dimension sizeThumb4 = thumb4.getPreferredSize();
+		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+
+		panel.repaint();
+
+	}
+
+	private void s1Rum3() {
+		room = "sRum";
+		panel.removeAll();
+		panel.add(closeButton);
+		panel.add(right);
+		panel.add(left);
+		panel.add(In);
+
+		panel.add(thumb4);
+
+		thumb4.setIcon(sovrum12);
+		Dimension sizeThumb4 = thumb4.getPreferredSize();
+		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+
+		panel.repaint();
+
+	}
+
+	private void s1Rum4() {
+		room = "sRum";
+		panel.removeAll();
+		panel.add(closeButton);
+		panel.add(right);
+		panel.add(left);
+		panel.add(In);
+		panel.add(dorr1);
+		dorr1.addActionListener(k -> vRum3());
+		Dimension sizeDorr1 = dorr1.getPreferredSize();
+		dorr1.setBackground(null);
+		dorr1.setBounds(720, 190, sizeDorr1.width, sizeDorr1.height);
+
+		panel.add(thumb4);
+
+		thumb4.setIcon(sovrum14);
+		Dimension sizeThumb4 = thumb4.getPreferredSize();
+		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+
+		panel.repaint();
+
+	}
+
+	private void vRum1() {
+		room = "vRum";
+		panel.removeAll();
+		panel.add(closeButton);
+		panel.add(right);
+		panel.add(left);
+		panel.add(In);
+
+		panel.add(thumb4);
+
+		thumb4.setIcon(vardagsrum1);
+		Dimension sizeThumb4 = thumb4.getPreferredSize();
+		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+
+		panel.repaint();
+	}
+
+	private void vRum2() {
+		room = "vRum";
+		panel.removeAll();
+		panel.add(closeButton);
+		panel.add(right);
+		panel.add(left);
+
+		panel.add(In);
+
+		panel.add(thumb4);
+
+		thumb4.setIcon(vardagsrum3);
+		Dimension sizeThumb4 = thumb4.getPreferredSize();
+		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+
+		panel.repaint();
+	}
+
+	private void vRum3() {
+		room = "vRum";
+		panel.removeAll();
+		panel.add(closeButton);
+		panel.add(right);
+		panel.add(left);
+
+		panel.add(In);
+		panel.add(dorr);
+		dorr.addActionListener(e -> s1Rum1());
+		Dimension sizeDorr = dorr.getPreferredSize();
+		dorr.setBackground(null);
+		dorr.setBounds(720, 190, sizeDorr.width, sizeDorr.height);
+
+		panel.add(thumb4);
+
+		thumb4.setIcon(vardagsrum2);
+		Dimension sizeThumb4 = thumb4.getPreferredSize();
+		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+
 		panel.repaint();
 	}
 
@@ -621,39 +738,75 @@ public class TestGame extends JFrame implements WindowListener {
 
 			imageLabel.setIcon(key);
 			Dimension size6 = imageLabel.getPreferredSize();
-			imageLabel.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+			imageLabel.setBounds(200, 100, tk.getScreenSize().width, tk.getScreenSize().height);
 
 		}
+		if (room.equals("vRum")) {
 
-		if (vLevel == 0) {
-			panel.add(In1);
-			In1.addActionListener(l -> vRum0());
-			Dimension sizeIn1 = In1.getPreferredSize();
-			In1.setBackground(null);
-			In1.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn1.width,
-					sizeIn1.height);
-		} else if (vLevel == 1) {
-			panel.add(In2);
-			In2.addActionListener(o -> vRum1());
-			Dimension sizeIn2 = In2.getPreferredSize();
-			In2.setBackground(null);
-			In2.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn2.width,
-					sizeIn2.height);
-		} else if (vLevel == 2) {
-			panel.add(In3);
-			In3.addActionListener(k -> vRum2());
-			Dimension sizeIn3 = In3.getPreferredSize();
-			In3.setBackground(null);
-			In3.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn3.width,
-					sizeIn3.height);
-		}else if(vLevel == 3) {
-			panel.add(In4);
-			In4.addActionListener(k -> vRum3());
-			Dimension sizeIn4 = In4.getPreferredSize();
-			In4.setBackground(null);
-			In4.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn4.width,
-					sizeIn4.height);
+			if (vLevel == 0) {
+				panel.add(In1);
+				In1.addActionListener(l -> vRum0());
+				Dimension sizeIn1 = In1.getPreferredSize();
+				In1.setBackground(null);
+				In1.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn1.width,
+						sizeIn1.height);
+			} else if (vLevel == 1) {
+				panel.add(In2);
+				In2.addActionListener(o -> vRum1());
+				Dimension sizeIn2 = In2.getPreferredSize();
+				In2.setBackground(null);
+				In2.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn2.width,
+						sizeIn2.height);
+			} else if (vLevel == 2) {
+				panel.add(In3);
+				In3.addActionListener(k -> vRum2());
+				Dimension sizeIn3 = In3.getPreferredSize();
+				In3.setBackground(null);
+				In3.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn3.width,
+						sizeIn3.height);
+			} else if (vLevel == 3) {
+				panel.add(In4);
+				In4.addActionListener(k -> vRum3());
+				Dimension sizeIn4 = In4.getPreferredSize();
+				In4.setBackground(null);
+				In4.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn4.width,
+						sizeIn4.height);
+			}
 		}
+		if (room.equals("sRum")) {
+
+			// Sovrum 1
+			if (sLevel == 0) {
+				panel.add(In5);
+				In5.addActionListener(e -> s1Rum1());
+				Dimension sizeIn5 = In5.getPreferredSize();
+				In5.setBackground(null);
+				In5.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn5.width,
+						sizeIn5.height);
+			} else if (sLevel == 1) {
+				panel.add(In6);
+				In6.addActionListener(e -> s1Rum2());
+				Dimension sizeIn6 = In6.getPreferredSize();
+				In6.setBackground(null);
+				In6.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn6.width,
+						sizeIn6.height);
+			} else if (sLevel == 2) {
+				panel.add(In7);
+				In7.addActionListener(e -> s1Rum3());
+				Dimension sizeIn7 = In7.getPreferredSize();
+				In7.setBackground(null);
+				In7.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn7.width,
+						sizeIn7.height);
+			} else if (sLevel == 3) {
+				panel.add(In8);
+				In8.addActionListener(e -> s1Rum4());
+				Dimension sizeIn8 = In8.getPreferredSize();
+				In8.setBackground(null);
+				In8.setBounds(tk.getScreenSize().width - 200, tk.getScreenSize().height - 170, sizeIn8.width,
+						sizeIn8.height);
+			}
+		}
+
 		panel.add(thumb3);
 		thumb3.setIcon(inventorybild); // bakgrundsbild
 		Dimension sizeThumb = thumb3.getPreferredSize();
