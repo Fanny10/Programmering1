@@ -64,6 +64,9 @@ public class TestGame extends JFrame implements WindowListener {
 	private ImageIcon sovrum13 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/sovrum1.3.png");
 	private ImageIcon sovrum14 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/sovrum1.4.png");
 
+	private ImageIcon hallen = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/hall1.png");
+	private ImageIcon hallen1 = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/hall2.png");
+
 	// inventory
 	private ImageIcon inventorybild = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/inventory.png"); // bakgrundbild
 	private ImageIcon key = new ImageIcon("C:/Users/fanny.lindqvist/Desktop/spel/black-key-50.png");
@@ -74,6 +77,7 @@ public class TestGame extends JFrame implements WindowListener {
 	private JLabel imageLabel = new JLabel(poopIcon);
 	private JButton dorr = new JButton("open");
 	private JButton dorr1 = new JButton("open");
+	private JButton hall = new JButton("Go");
 	private JButton okButton = new JButton(poopIcon2);
 	private JButton nyckel = new JButton("skaffa nyckel");
 	// private JButton nyckel1 = new JButton(key);
@@ -111,6 +115,7 @@ public class TestGame extends JFrame implements WindowListener {
 	private JLabel text = new JLabel(".....");
 
 	private int vLevel = 0;
+	private int hLevel = 0;
 	private int sLevel = 0;
 	private int level = 0;
 	private String room = "vRum";
@@ -492,6 +497,7 @@ public class TestGame extends JFrame implements WindowListener {
 	}
 
 	private void vRum0() {
+		room = "vRum";
 		panel.removeAll();
 		panel.add(closeButton);
 		panel.add(In);
@@ -533,6 +539,14 @@ public class TestGame extends JFrame implements WindowListener {
 			else if (sLevel == 3)
 				sLevel = 0;
 		}
+		//hallen
+		else if (room.equals("hRum")) {
+			if (hLevel == 0)
+				hLevel = 1;
+			else if (hLevel == 1)
+				hLevel = 0;
+
+		}
 		levelLoader();
 	}
 
@@ -552,14 +566,19 @@ public class TestGame extends JFrame implements WindowListener {
 		// Sovrum 1
 		else if (room.equals("sRum")) {
 			if (sLevel == 0)
-				sLevel = 3;
+				sLevel = 2;
 			else if (sLevel == 1)
 				sLevel = 0;
 			else if (sLevel == 2)
-				sLevel = 1;
+				sLevel = 3;
 			else if (sLevel == 3)
-				sLevel = 2;
+				sLevel = 1;
 
+		} else if (room.equals("hRum")) {
+			if (hLevel == 1)
+				hLevel = 0;
+			else if (hLevel == 0)
+				hLevel = 1;
 		}
 		levelLoader();
 	}
@@ -585,8 +604,20 @@ public class TestGame extends JFrame implements WindowListener {
 				s1Rum3();
 			} else if (sLevel == 3) {
 				s1Rum4();
+				
 			}
+			//Hall
+		} else if (room.equals("hRum")) {
+			if (hLevel == 0) {
+				hRum1();
+			} else if (hLevel == 1) {
+				hRum2();
+
+			}
+		
+		
 		}
+
 	}
 
 	// Sovrum 1
@@ -666,6 +697,40 @@ public class TestGame extends JFrame implements WindowListener {
 
 	}
 
+	private void hRum1() {
+		room = "hRum";
+		panel.removeAll();
+		panel.add(closeButton);
+		panel.add(right);
+		panel.add(left);
+
+		panel.add(thumb4);
+
+		thumb4.setIcon(hallen);
+		Dimension sizeThumb4 = thumb4.getPreferredSize();
+		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+
+		panel.repaint();
+
+	}
+	private void hRum2() {
+		room = "hRum";
+		panel.removeAll();
+		panel.add(closeButton);
+		panel.add(right);
+		panel.add(left);
+
+		panel.add(thumb4);
+
+		thumb4.setIcon(hallen1);
+		Dimension sizeThumb4 = thumb4.getPreferredSize();
+		thumb4.setBounds(0, 0, tk.getScreenSize().width, tk.getScreenSize().height);
+
+		panel.repaint();
+
+	}
+	
+
 	private void vRum1() {
 		room = "vRum";
 		panel.removeAll();
@@ -673,6 +738,11 @@ public class TestGame extends JFrame implements WindowListener {
 		panel.add(right);
 		panel.add(left);
 		panel.add(In);
+		panel.add(hall);
+		hall.addActionListener(e -> hRum1());
+		Dimension sizeHall = hall.getPreferredSize();
+		hall.setBackground(null);
+		hall.setBounds(1290, 510, sizeHall.width, sizeHall.height);
 
 		panel.add(thumb4);
 
